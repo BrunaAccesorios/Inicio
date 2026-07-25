@@ -1275,6 +1275,48 @@ body {
     grid-column: span 2;
   }
 
+  .bruna-editorial {
+    padding-top: 1.7rem;
+  }
+
+  .bruna-editorial-feature {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-row: auto;
+    min-height: 0;
+    background: var(--bruna-paper);
+  }
+
+  .bruna-editorial-feature img {
+    display: block;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 1 / 1.05;
+    object-fit: cover;
+  }
+
+  .bruna-editorial-feature div {
+    padding: 1rem 1.05rem 1.15rem;
+    background: var(--bruna-paper);
+  }
+
+  .bruna-editorial-feature h2 {
+    margin: 0.55rem 0 0.4rem;
+    font-size: 1.45rem;
+    line-height: 1.05;
+  }
+
+  .bruna-editorial-feature p {
+    margin-bottom: 0.7rem;
+    font-size: 0.86rem;
+    line-height: 1.45;
+  }
+
+  .bruna-editorial-feature strong {
+    margin-top: 0;
+    font-size: 1.18rem;
+  }
+
   .bruna-product-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 0.65rem;
