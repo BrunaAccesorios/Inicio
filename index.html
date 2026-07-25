@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
+        <meta name="description" content="Catálogo de accesorios Bruna: aros, anillos, pulseras, collares y otros favoritos." />
         <meta name="author" content="" />
         <title>Bruna-Accesorios</title>
         <!-- Favicon-->
@@ -12,61 +12,194 @@
         <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
+        <link href="css/bruna-modern.css" rel="stylesheet" />
     </head>
     <body>
       <!-- Navigation-->
+        <div class="bruna-sticky-header">
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="https://brunaaccesorios.github.io/Inicio/">Bruna</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                <a class="navbar-brand bruna-brand" href="https://brunaaccesorios.github.io/Inicio/">
+                    <img src="assets/marca/foto-de-perfil-08.png" alt="Bruna" />
+                    <span>Bruna</span>
+                </a>
+                <div class="bruna-header-actions">
+                    <button class="bruna-icon-button bruna-search-toggle" type="button" aria-label="Buscar productos" aria-expanded="false">
+                        <i class="bi bi-search"></i>
+                    </button>
+                    <button class="navbar-toggler bruna-icon-button bruna-menu-toggle" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Abrir menú">
+                        <span class="navbar-toggler-icon"></span>
+                    </button>
+                </div>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="https://brunaaccesorios.github.io/Inicio/">Inicio</a></li>
-                       
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Productos</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="https://brunaaccesorios.github.io/Inicio/">Todos los productos</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="https://brunaaccesorios.github.io/Collares-de-Gamuza/">Collares de Gamuza</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="https://brunaaccesorios.github.io/Cadenas/">Collares con Cadena</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="https://brunaaccesorios.github.io/Anillos-Plateados/">Anillos de Acero Plateado</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="https://brunaaccesorios.github.io/Anillos-Blancos/">Anillos de Acero Blanco</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="https://brunaaccesorios.github.io/Anillos-Dorados/">Anillos de Acero Dorado</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="https://brunaaccesorios.github.io/Aros/">Aros</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="https://brunaaccesorios.github.io/Pulseras/">Pulseras</a></li>
-                               
-                            </ul>
+                    <ul class="navbar-nav bruna-menu-list">
+                        <li><a class="bruna-menu-home" href="https://brunaaccesorios.github.io/Inicio/">Inicio</a></li>
+                        <li><a class="bruna-menu-home bruna-filter-link" href="#catalogo" data-filter="">Ver todo</a></li>
+                        <li>
+                            <details class="bruna-menu-category">
+                                <summary>Aros</summary>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="aros">Ver todo Aros</a>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="aros acero quirurgico">Acero Quirúrgico</a>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="aros acero dorado">Acero Dorado</a>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="aros acero blanco">Acero Blanco</a>
+                            </details>
                         </li>
+                        <li>
+                            <details class="bruna-menu-category">
+                                <summary>Anillos</summary>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="anillo">Ver todo Anillos</a>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="anillo acero quirurgico">Acero Quirúrgico</a>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="anillo acero dorado">Acero Dorado</a>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="anillo acero blanco">Acero Blanco</a>
+                            </details>
+                        </li>
+                        <li>
+                            <details class="bruna-menu-category">
+                                <summary>Pulseras</summary>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="pulsera">Ver todo Pulseras</a>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="pulsera acero quirurgico">Acero Quirúrgico</a>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="pulsera acero dorado">Acero Dorado</a>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="pulsera acero blanco">Acero Blanco</a>
+                            </details>
+                        </li>
+                        <li>
+                            <details class="bruna-menu-category">
+                                <summary>Collares</summary>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="collar">Ver todo Collares</a>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="collar acero quirurgico">Acero Quirúrgico</a>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="collar acero dorado">Acero Dorado</a>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="collar acero blanco">Acero Blanco</a>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="collar gamuza">Gamuza</a>
+                                <a href="#catalogo" class="bruna-filter-link" data-filter="collar cadena">Cadenas</a>
+                            </details>
+                        </li>
+                        <li><a class="bruna-menu-home bruna-filter-link" href="#catalogo" data-filter="cinturon">Cinturones</a></li>
                     </ul>
                     
                 </div>
             </div>
         </nav>
+        <div class="bruna-header-search" hidden>
+            <label for="product-search">¿Qué estás buscando?</label>
+            <div>
+                <input id="product-search" type="search" placeholder="Buscar" autocomplete="off" />
+                <span>Buscar</span>
+            </div>
+        </div>
+        </div>
         <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">Bruna Accesorios</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Página principal</p>
+        <header class="bruna-home-hero">
+            <div class="bruna-hero-slide is-active" style="background-image: url('assets/productos/aros-drop-dorados/drop-dorados-01.jpg')"></div>
+            <div class="bruna-hero-slide" style="background-image: url('assets/Aros/fotos brunaa-03.jpg')"></div>
+            <div class="bruna-hero-slide" style="background-image: url('assets/450x300 29-12/collar koi.jpg')"></div>
+            <div class="bruna-hero-slide" style="background-image: url('assets/450x300 29-12/collar efy.jpg')"></div>
+            <div class="container px-4 px-lg-5 bruna-hero-content">
+                <p class="bruna-hero-eyebrow">Accesorios en acero · Dorado · Blanco · Quirúrgico</p>
+                <h1>Accesorios para todos los días</h1>
+                <p class="bruna-hero-copy">Piezas simples, combinables y con ese detalle que cambia el look.</p>
+                <div class="bruna-hero-actions">
+                    <a class="bruna-gold-button" href="#catalogo">Ver catálogo</a>
+                    <a class="bruna-ghost-button" href="productos/aros-drop-dorados/index.html">Producto destacado</a>
                 </div>
             </div>
         </header>
+        <section class="bruna-category-strip" aria-label="Categorías principales">
+            <a href="#catalogo" class="bruna-filter-link" data-filter="aros">Aros</a>
+            <a href="#catalogo" class="bruna-filter-link" data-filter="anillo">Anillos</a>
+            <a href="#catalogo" class="bruna-filter-link" data-filter="pulsera">Pulseras</a>
+            <a href="#catalogo" class="bruna-filter-link" data-filter="collar">Collares</a>
+            <a href="#catalogo" class="bruna-filter-link" data-filter="cinturon">Cinturones</a>
+        </section>
+        <section class="bruna-editorial">
+            <div class="container px-4 px-lg-5">
+                <div class="bruna-editorial-grid">
+                    <a class="bruna-editorial-feature" href="productos/aros-drop-dorados/index.html">
+                        <img src="assets/productos/aros-drop-dorados/drop-dorados-02.jpg" alt="Aros Drop Dorados" />
+                        <div>
+                            <span>Producto destacado</span>
+                            <h2>Aros Drop Dorados</h2>
+                            <p>Aros con función clic, cómodos para usar todo el día.</p>
+                            <strong>$12.000</strong>
+                        </div>
+                    </a>
+                    <div class="bruna-promo-panel">
+                        <h2>Elegancia simple, brillo justo</h2>
+                        <p>Una selección de accesorios para sumar detalle sin recargar.</p>
+                    </div>
+                    <a class="bruna-mini-banner" href="#catalogo">
+                        <span>Novedades</span>
+                        <strong>Ver últimos ingresos</strong>
+                    </a>
+                    <a class="bruna-mini-banner bruna-mini-banner-dark" href="#catalogo">
+                        <span>Favoritos</span>
+                        <strong>Comprar por categoría</strong>
+                    </a>
+                </div>
+            </div>
+        </section>
+        <section class="bruna-feature-carousel" aria-label="Productos destacados">
+            <div class="container px-4 px-lg-5">
+                <div class="bruna-section-heading">
+                    <div>
+                        <span>Destacados</span>
+                        <h2>Elegidos de la semana</h2>
+                    </div>
+                    <div class="bruna-carousel-controls">
+                        <button class="bruna-carousel-arrow bruna-carousel-prev" type="button" aria-label="Ver destacados anteriores">‹</button>
+                        <button class="bruna-carousel-arrow bruna-carousel-next" type="button" aria-label="Ver más destacados">›</button>
+                    </div>
+                </div>
+                <div class="bruna-carousel-shell">
+                    <div class="bruna-carousel-track">
+                        <a class="bruna-carousel-card" href="productos/aros-drop-dorados/index.html">
+                            <img src="assets/productos/aros-drop-dorados/drop-dorados-01.jpg" alt="Aros Drop Dorados" />
+                            <div>
+                                <strong>Aros Drop Dorados</strong>
+                                <span>$12.000</span>
+                            </div>
+                        </a>
+                        <a class="bruna-carousel-card" href="productos/pulsera-diana/index.html">
+                            <img src="assets/450x300 29-12/pulsera diana.jpg" alt="Pulsera Diana" />
+                            <div>
+                                <strong>Pulsera Diana</strong>
+                                <span>$9.500</span>
+                            </div>
+                        </a>
+                        <a class="bruna-carousel-card" href="productos/collar-koi/index.html">
+                            <img src="assets/450x300 29-12/collar koi.jpg" alt="Collar Koi" />
+                            <div>
+                                <strong>Collar Koi</strong>
+                                <span>Ver producto</span>
+                            </div>
+                        </a>
+                        <a class="bruna-carousel-card" href="productos/aros-grecia-plateados/index.html">
+                            <img src="assets/450x300 marzo/aros grecia.jpg" alt="Aros Grecia" />
+                            <div>
+                                <strong>Aros Grecia</strong>
+                                <span>Ver producto</span>
+                            </div>
+                        </a>
+                        <a class="bruna-carousel-card" href="productos/collar-fuego/index.html">
+                            <img src="assets/450x300 29-12/collar fuego.jpg" alt="Collar Fuego" />
+                            <div>
+                                <strong>Collar Fuego</strong>
+                                <span>Ver producto</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
         <!-- Section-->
-        <section class="py-5">
+        <section class="py-5" id="catalogo">
             <div class="container px-4 px-lg-5 mt-5">
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5">
+                <p class="bruna-search-empty" hidden>No encontramos productos con ese nombre.</p>
+                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center bruna-product-grid">
+                    <div class="col mb-5" data-search="Cuff Oxford https://brunaaccesorios.github.io/Cuff-Oxford/ assets/450x300 20-9/oxford.jpg Cuff Oxford Acero Quir&#250;rgico Aro a presi&#243;n">
                         <div class="card h-100">
                            
                                <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Cuff-Oxford/">
+                            <a href="productos/cuff-oxford/index.html">
                             <img class="card-img-top" src="assets/450x300 20-9/oxford.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -82,14 +215,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Cuff-Oxford/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/cuff-oxford/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Cuff Trick https://brunaaccesorios.github.io/Cuff-Trickc/ assets/450x300 junio/trick.jpg Cuff Trick Acero Quir&#250;rgico Aro a presi&#243;n sin perforaci&#243;n">
                         <div class="card h-100">
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Cuff-Trickc/">
+                            <a href="productos/cuff-trick/index.html">
                             <img class="card-img-top" src="assets/450x300 junio/trick.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -105,14 +238,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Cuff-Trickc/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/cuff-trick/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Chain Brillos https://brunaaccesorios.github.io/Pulsera-Chain-Brilloss/ assets/450x300 junio pulseras/chain brillos.jpg Pulsera Chain Brillos Regulable Acero Quir&#250;rgico">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Chain-Brilloss/">
+                            <a href="productos/pulsera-chain-brillos/index.html">
                             <img class="card-img-top" src="assets/450x300 junio pulseras/chain brillos.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -128,15 +261,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Chain-Brilloss/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-chain-brillos/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Drop Plateados https://brunaaccesorios.github.io/Aros-Drop-Plateadoss/ assets/450x300 junio/drop plateados.jpg Aros Drop Plateados Acero Blanco">
                         <div class="card h-100">
 
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Drop-Plateadoss/">
+                            <a href="productos/aros-drop-plateados/index.html">
                             <img class="card-img-top" src="assets/450x300 junio/drop plateados.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -152,37 +285,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Drop-Plateadoss/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-drop-plateados/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Drop-Plateadoss/">
-                            <img class="card-img-top" src="assets/450x300 junio/drop plateados.jpg" alt="..." />
-                            </a>
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <h5 class="fw-bolder">Aros Drop Plateados</h5>
-                                    
-                                    <!-- Product price-->
-                                 
-                                    $12.000
-                                </div>
-                            </div>
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Drop-Plateadoss/">Ver más</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Chain https://brunaaccesorios.github.io/Pulsera-Chainn/ assets/450x300 junio pulseras/chain.jpg Pulsera Chain Regulable Acero Quir&#250;rgico">
                         <div class="card h-100">
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Chainn/">
+                            <a href="productos/pulsera-chain/index.html">
                             <img class="card-img-top" src="assets/450x300 junio pulseras/chain.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -198,14 +308,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Chainn/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-chain/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Cuff Rope https://brunaaccesorios.github.io/Cuff-Ropee/ assets/450x300 junio/rope.jpg Cuff Rope Acero Quir&#250;rgico Aro a presi&#243;n sin perforaci&#243;n">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Cuff-Ropee/">
+                            <a href="productos/cuff-rope/index.html">
                             <img class="card-img-top" src="assets/450x300 junio/rope.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -221,15 +331,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Cuff-Ropee/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/cuff-rope/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Diana https://brunaaccesorios.github.io/Pulsera-Diana/ assets/450x300 29-12/pulsera diana.jpg Pulsera Diana Acero Blanco">
                         <div class="card h-100">
                       
                        <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Diana/">
+                            <a href="productos/pulsera-diana/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/pulsera diana.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -245,14 +355,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Diana/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-diana/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Bianca https://brunaaccesorios.github.io/Pulsera-Bianca/ assets/450x300 junio pulseras/bianca.jpg Pulsera Bianca Regulable Doble cadena Acero Blanco">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Bianca/">
+                            <a href="productos/pulsera-bianca/index.html">
                             <img class="card-img-top" src="assets/450x300 junio pulseras/bianca.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -268,14 +378,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Bianca/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-bianca/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Argollitas Renata Plateadas https://brunaaccesorios.github.io/Argollitas-Renata/ assets/450x300 20-9/ffs-05.jpg Argollitas Renata Plateadas Acero Quir&#250;rgico">
                         <div class="card h-100">
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Argollitas-Renata/">
+                            <a href="productos/argollitas-renata-plateadas/index.html">
                             <img class="card-img-top" src="assets/450x300 20-9/ffs-05.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -291,14 +401,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Argollitas-Renata/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/argollitas-renata-plateadas/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Argollitas Renata Doradas https://brunaaccesorios.github.io/Argollitas-Renata-Doradas/ assets/450x300 10-10/renata d.jpg Argollitas Renata Doradas Acero Dorado">
                         <div class="card h-100">
                                    <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Argollitas-Renata-Doradas/">
+                            <a href="productos/argollitas-renata-doradas/index.html">
                             <img class="card-img-top" src="assets/450x300 10-10/renata d.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -314,14 +424,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Argollitas-Renata-Doradas/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/argollitas-renata-doradas/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Argollitas Nox https://brunaaccesorios.github.io/Argollitas-Nox/ assets/450x300 7-12/nox.jpg Argollitas Nox Acero Blanco">
                         <div class="card h-100">
                                <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Argollitas-Nox/">
+                            <a href="productos/argollitas-nox/index.html">
                             <img class="card-img-top" src="assets/450x300 7-12/nox.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -337,15 +447,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Argollitas-Nox/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/argollitas-nox/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Arctic https://brunaaccesorios.github.io/Anillo-Arctic/ assets/450x300 anillos junio/arctic.jpg Anillo Arctic Acero Quir&#250;rgico Regulable">
                         <div class="card h-100">
                             
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Arctic/">
+                            <a href="productos/anillo-arctic/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/arctic.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -361,14 +471,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Arctic/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-arctic/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Grecia Plateados https://brunaaccesorios.github.io/Aros-Grecia/ assets/450x300 marzo/aros grecia.jpg Aros Grecia Acero Quir&#250;rgico">
                         <div class="card h-100">
                                    <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Grecia/">
+                            <a href="productos/aros-grecia-plateados/index.html">
                             <img class="card-img-top" src="assets/450x300 marzo/aros grecia.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -384,14 +494,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Grecia/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-grecia-plateados/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Serena https://brunaaccesorios.github.io/Argollitas-Serena/ assets/450x300 7-12/serena.jpg Argollitas Serena Acero">
                         <div class="card h-100">
                         <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Argollitas-Serena/">
+                            <a href="productos/aros-serena/index.html">
                             <img class="card-img-top" src="assets/450x300 7-12/serena.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -407,14 +517,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Argollitas-Serena/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-serena/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Aria Dorado https://brunaaccesorios.github.io/Anillo-Aria-Dorado/ assets/450x300 anillos junio/aria dorado.jpg Anillo Aria Dorado Acero Dorado Regulable">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Aria-Dorado/">
+                            <a href="productos/anillo-aria-dorado/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/aria dorado.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -430,15 +540,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Aria-Dorado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-aria-dorado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Aria Plateado https://brunaaccesorios.github.io/Anillo-Aria-Plateado/ assets/450x300 anillos junio/aria plateado.jpg Anillo Aria Plateado Acero Quir&#250;rgico Regulable">
                         <div class="card h-100">
                             
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Aria-Plateado/">
+                            <a href="productos/anillo-aria-plateado/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/aria plateado.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -454,14 +564,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Aria-Plateado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-aria-plateado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Glanz Plateados https://brunaaccesorios.github.io/Aros-Glanz-plateadoss/ assets/450x300 junio/glanz plateadas.jpg Aros Glanz Plateados Acero Quir&#250;rgico">
                         <div class="card h-100">
                                <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Glanz-plateadoss/">
+                            <a href="productos/aros-glanz-plateados/index.html">
                             <img class="card-img-top" src="assets/450x300 junio/glanz plateadas.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -477,14 +587,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Glanz-plateadoss/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-glanz-plateados/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Cuff Point https://brunaaccesorios.github.io/Cuff-Pointt/ assets/450x300 junio/point.jpg Cuff Point Acero Quir&#250;rgico Aro a presi&#243;n sin perforaci&#243;n">
                         <div class="card h-100">
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Cuff-Pointt/">
+                            <a href="productos/cuff-point/index.html">
                             <img class="card-img-top" src="assets/450x300 junio/point.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -500,14 +610,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Cuff-Pointt/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/cuff-point/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Unión https://brunaaccesorios.github.io/Pulsera-Union/ assets/450x300 junio pulseras/union.jpg Pulsera Uni&#243;n Acero blanco Regulable">
                         <div class="card h-100">
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Union/">
+                            <a href="productos/pulsera-union/index.html">
                             <img class="card-img-top" src="assets/450x300 junio pulseras/union.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -523,14 +633,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Union/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-union/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Brisa Plateado https://brunaaccesorios.github.io/Anillo-Brisa-Plateado/ assets/450x300 anillos junio/brisa plateado.jpg Anillo Brisa Plateado Acero Quir&#250;rgico Regulable">
                         <div class="card h-100">
                                <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Brisa-Plateado/">
+                            <a href="productos/anillo-brisa-plateado/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/brisa plateado.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -546,15 +656,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Brisa-Plateado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-brisa-plateado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Star https://brunaaccesorios.github.io/Aros-Star/ assets/450x300 junio/star.jpg Aros Star Acero Quir&#250;rgico">
                         <div class="card h-100">
                      
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Star/">
+                            <a href="productos/aros-star/index.html">
                             <img class="card-img-top" src="assets/450x300 junio/star.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -570,14 +680,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Star/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-star/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Camille https://brunaaccesorios.github.io/Anillo-Camille/ assets/450x300 anillos junio/camille.jpg Anillo Camille Acero Quir&#250;rgico Regulable">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Camille/">
+                            <a href="productos/anillo-camille/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/camille.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -593,15 +703,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Camille/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-camille/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Capri https://brunaaccesorios.github.io/Anillo-Capri/ assets/450x300 anillos junio/capri.jpg Anillo Capri Acero dorado Regulable">
                         <div class="card h-100">
                    
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Capri/">
+                            <a href="productos/anillo-capri/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/capri.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -617,14 +727,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Capri/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-capri/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Sol https://brunaaccesorios.github.io/Aros-Soll/ assets/450x300 junio/sol.jpg Aros Sol Acero Quir&#250;rgico">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Soll/">
+                            <a href="productos/aros-sol/index.html">
                             <img class="card-img-top" src="assets/450x300 junio/sol.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -640,14 +750,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Soll/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-sol/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Kora https://brunaaccesorios.github.io/Pulsera-Koraa/ assets/450x300 junio pulseras/kora.jpg Pulsera Kora Regulable Acero Dorado">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Koraa/">
+                            <a href="productos/pulsera-kora/index.html">
                             <img class="card-img-top" src="assets/450x300 junio pulseras/kora.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -663,15 +773,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Koraa/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-kora/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Rent https://brunaaccesorios.github.io/Aros-Rentt/ assets/450x300 junio/rent.jpg Aros Rent Acero Dorado">
                         <div class="card h-100">
                           
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Rentt/">
+                            <a href="productos/aros-rent/index.html">
                             <img class="card-img-top" src="assets/450x300 junio/rent.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -687,15 +797,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Rentt/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-rent/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Dul Dorado https://brunaaccesorios.github.io/Anillo-Dul-Dorado/ assets/450x300 anillos junio/dul dorado.jpg Anillo Dul Dorado Acero Dorado Talle 19 y 20">
                         <div class="card h-100">
                                
                                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Dul-Dorado/">
+                            <a href="productos/anillo-dul-dorado/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/dul dorado.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -711,14 +821,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Dul-Dorado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-dul-dorado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Eclipse https://brunaaccesorios.github.io/Anillo-Eclipse/ assets/450x300 anillos junio/eclipse.jpg Anillo Eclipse Acero Quir&#250;rgico Regulable">
                         <div class="card h-100">
                                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Eclipse/">
+                            <a href="productos/anillo-eclipse/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/eclipse.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -734,15 +844,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Eclipse/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-eclipse/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Elia https://brunaaccesorios.github.io/Anillo-Elia/ assets/450x300 anillos junio/elia.jpg Anillo Elia Acero Dorado Regulable">
                         <div class="card h-100">
                              
                                  <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Elia/">
+                            <a href="productos/anillo-elia/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/elia.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -758,15 +868,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Elia/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-elia/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Fiorella https://brunaaccesorios.github.io/Anillo-Fiorella/ assets/450x300 anillos junio/fiorella.jpg Anillo Fiorella Acero Blanco Talle 18">
                         <div class="card h-100">
                       
                                <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Fiorella/">
+                            <a href="productos/anillo-fiorella/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/fiorella.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -782,14 +892,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Fiorella/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-fiorella/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Lula https://brunaaccesorios.github.io/Aros-Lula/ assets/450x300 junio/lula.jpg Aros Lula Acero Quir&#250;rgico">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Lula/">
+                            <a href="productos/aros-lula/index.html">
                             <img class="card-img-top" src="assets/450x300 junio/lula.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -805,14 +915,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Lula/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-lula/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Francesca https://brunaaccesorios.github.io/Anillo-Francesca/ assets/450x300 anillos junio/francesca.jpg Anillo Francesca Acero Quir&#250;rgico Talle 18 y 19">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Francesca/">
+                            <a href="productos/anillo-francesca/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/francesca.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -828,15 +938,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Francesca/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-francesca/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Frost https://brunaaccesorios.github.io/Anillo-Frost/ assets/450x300 anillos junio/frost.jpg Anillo Frost Acero Quir&#250;rgico Regulable">
                         <div class="card h-100">
                        
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Frost/">
+                            <a href="productos/anillo-frost/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/frost.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -852,14 +962,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Frost/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-frost/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Lisa Dorados https://brunaaccesorios.github.io/Aros-Lisa-doradoss/ assets/450x300 junio/lisa dorados.jpg Aros Lisa Dorados Acero Dorado">
                         <div class="card h-100">
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Lisa-doradoss/">
+                            <a href="productos/aros-lisa-dorados/index.html">
                             <img class="card-img-top" src="assets/450x300 junio/lisa dorados.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -875,15 +985,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Lisa-doradoss/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-lisa-dorados/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Julia https://brunaaccesorios.github.io/Aros-Julia/ assets/450x300 junio/julia.jpg Aros Julia Acero Quir&#250;rgico">
                         <div class="card h-100">
                             
                                 <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Julia/">
+                            <a href="productos/aros-julia/index.html">
                             <img class="card-img-top" src="assets/450x300 junio/julia.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -899,14 +1009,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Julia/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-julia/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Iris https://brunaaccesorios.github.io/Anillo-Iris/ assets/450x300 anillos junio/iris.jpg Anillo Iris Acero Quir&#250;rgico Regulable">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Iris/">
+                            <a href="productos/anillo-iris/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/iris.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -922,14 +1032,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Iris/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-iris/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Jules https://brunaaccesorios.github.io/Aros-Juless/ assets/450x300 junio/jules.jpg Aros Jules Acero Quir&#250;rgico">
                         <div class="card h-100">
                                <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Juless/">
+                            <a href="productos/aros-jules/index.html">
                             <img class="card-img-top" src="assets/450x300 junio/jules.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -945,16 +1055,16 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Juless/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-jules/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Glanz Dorados https://brunaaccesorios.github.io/Aros-Glanz-Doradoss/ assets/450x300 junio/glanz doradas.jpg Aros Glanz Dorados Acero Dorado">
                         <div class="card h-100">
                         
                         
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Glanz-Doradoss/">
+                            <a href="productos/aros-glanz-dorados/index.html">
                             <img class="card-img-top" src="assets/450x300 junio/glanz doradas.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -970,15 +1080,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Glanz-Doradoss/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-glanz-dorados/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Miel https://brunaaccesorios.github.io/Anillo-Miel/ assets/450x300 anillos junio/miel.jpg Anillo Miel Acero Dorado Regulable">
                         <div class="card h-100">
                  
                                 <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Miel/">
+                            <a href="productos/anillo-miel/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/miel.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -994,14 +1104,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Miel/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-miel/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Siena https://brunaaccesorios.github.io/Anillo-Siena/ assets/450x300 anillos junio/siena.jpg Anillo Siena Acero Quir&#250;rgico Talle 17 y 19">
                         <div class="card h-100">
                            <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Siena/">
+                            <a href="productos/anillo-siena/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/siena.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1017,17 +1127,18 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Siena/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-siena/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Drop Dorados productos/aros-drop-dorados/ assets/productos/aros-drop-dorados/drop-dorados-01.jpg Aros Drop Dorados Aros Drop Dorados de Bruna Accesorios. Aros con función clic en acero dorado.">
                         <div class="card h-100">
                        
                      
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Drop-Doradoss/">
-                            <img class="card-img-top" src="assets/450x300 junio/drop dorados.jpg" alt="..." />
+                            <span class="bruna-featured-badge">Nuevo</span>
+                            <a href="productos/aros-drop-dorados/index.html">
+                            <img class="card-img-top" src="assets/productos/aros-drop-dorados/drop-dorados-01.jpg" alt="Aros Drop Dorados" />
                             </a>
                             <!-- Product details-->
                             <div class="card-body p-4">
@@ -1037,19 +1148,19 @@
                                     
                                     <!-- Product price-->
                                  
-                                    $12.000
+                                    <span class="bruna-card-price">$12.000</span>
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Drop-Doradoss/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-drop-dorados/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Mónaco Dorado https://brunaaccesorios.github.io/Anillo-Monaco-Dorado/ assets/450x300 anillos junio/monaco dorado.jpg Anillo M&#243;naco Dorado Acero dorado Regulable">
                         <div class="card h-100">
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Monaco-Dorado/">
+                            <a href="productos/anillo-monaco-dorado/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/monaco dorado.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1065,15 +1176,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Monaco-Dorado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-monaco-dorado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Mónaco Plateado https://brunaaccesorios.github.io/Anillo-Monaco-Plateado/ assets/450x300 anillos junio/monaco plateado.jpg Anillo M&#243;naco Plateado Acero Quir&#250;rgico Regulable">
                         <div class="card h-100">
                     
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Monaco-Plateado/">
+                            <a href="productos/anillo-monaco-plateado/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/monaco plateado.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1089,14 +1200,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Monaco-Plateado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-monaco-plateado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Dona Dorados https://brunaaccesorios.github.io/Aros-Dona-Dorados/ assets/450x300 junio/dona dorados.jpg Aros Dona Dorados Acero Dorado">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Dona-Dorados/">
+                            <a href="productos/aros-dona-dorados/index.html">
                             <img class="card-img-top" src="assets/450x300 junio/dona dorados.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1112,14 +1223,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Dona-Dorados/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-dona-dorados/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Nara https://brunaaccesorios.github.io/Anillo-Nara/ assets/450x300 anillos junio/nara.jpg Anillo Nara Acero Dorado Regulable">
                         <div class="card h-100">
                                 <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Nara/">
+                            <a href="productos/anillo-nara/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/nara.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1135,14 +1246,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Nara/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-nara/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Cleo https://brunaaccesorios.github.io/Aros-Cleoo/ assets/450x300 junio/cleo.jpg Aros Cleo Acero Blanco">
                         <div class="card h-100">
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Cleoo/">
+                            <a href="productos/aros-cleo/index.html">
                             <img class="card-img-top" src="assets/450x300 junio/cleo.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1158,14 +1269,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Cleoo/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-cleo/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Neblina https://brunaaccesorios.github.io/Anillo-Neblina/ assets/450x300 anillos junio/neblina.jpg Anillo Neblina Acero Quir&#250;rgico Regulable">
                         <div class="card h-100">
                                 <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Neblina/">
+                            <a href="productos/anillo-neblina/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/neblina.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1181,15 +1292,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Neblina/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-neblina/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Nova Dorado https://brunaaccesorios.github.io/Anillo-Nova-Dorado/ assets/450x300 anillos junio/nova dorado.jpg Anillo Nova Dorado Acero Dorado Regulable">
                         <div class="card h-100">
                          
                                <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Nova-Dorado/">
+                            <a href="productos/anillo-nova-dorado/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/nova dorado.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1205,14 +1316,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Nova-Dorado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-nova-dorado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Blu https://brunaaccesorios.github.io/Aros-Blu/ assets/450x300 junio/blu.jpg Aros Blu Acero blanco">
                         <div class="card h-100">
                                <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Blu/">
+                            <a href="productos/aros-blu/index.html">
                             <img class="card-img-top" src="assets/450x300 junio/blu.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1228,14 +1339,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Blu/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-blu/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Nova Plateado https://brunaaccesorios.github.io/Anillo-Nova-Plateado/ assets/450x300 anillos junio/nova plateado.jpg Anillo Nova Plateado Acero Quir&#250;rgico Regulable">
                         <div class="card h-100">
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Nova-Plateado/">
+                            <a href="productos/anillo-nova-plateado/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/nova plateado.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1251,14 +1362,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Nova-Plateado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-nova-plateado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Saudi Dorado https://brunaaccesorios.github.io/Anillo-saudi-DOrado/ assets/450x300 anillos junio/saudi dorado.jpg Anillo Saudi Dorado Acero Dorado Talle 18 y 19">
                         <div class="card h-100">
                                 <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-saudi-DOrado/">
+                            <a href="productos/anillo-saudi-dorado/index.html">
                             <img class="card-img-top" src="assets/450x300 anillos junio/saudi dorado.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1274,16 +1385,16 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-saudi-DOrado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-saudi-dorado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Cinturón Roma Negro https://brunaaccesorios.github.io/Cintur-n-Roma-Negro/ assets/450x300 marzo/cinto roma negro.jpg Cintur&#243;n Roma Negro Cintur&#243;n con faja elastizada Negro con detalles en dorado, acharolado y ajustable">
                         <div class="card h-100">
                         
                         
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Cintur-n-Roma-Negro/">
+                            <a href="productos/cinturon-roma-negro/index.html">
                             <img class="card-img-top" src="assets/450x300 marzo/cinto roma negro.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1299,14 +1410,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Cintur-n-Roma-Negro/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/cinturon-roma-negro/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Cinturón Kay https://brunaaccesorios.github.io/cintur-n-Kay/ assets/450x300 marzo/cinto kay.jpg Cintur&#243;n Kay Cintur&#243;n con faja elastizada Marr&#243;n acharolado">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/cintur-n-Kay/">
+                            <a href="productos/cinturon-kay/index.html">
                             <img class="card-img-top" src="assets/450x300 marzo/cinto kay.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1322,14 +1433,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/cintur-n-Kay/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/cinturon-kay/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Choker Tridi https://brunaaccesorios.github.io/Choker-Tridi/ assets/450x300 marzo/collar tridi.jpg Choker Tridi Niquelada">
                         <div class="card h-100">
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Choker-Tridi/">
+                            <a href="productos/choker-tridi/index.html">
                             <img class="card-img-top" src="assets/450x300 marzo/collar tridi.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1345,15 +1456,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Choker-Tridi/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/choker-tridi/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Rula https://brunaaccesorios.github.io/Cadena-Rula/ assets/450x300 marzo/collar rula.jpg Collar Rula Cadena y dije niquelado">
                         <div class="card h-100">
                            
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Cadena-Rula/">
+                            <a href="productos/collar-rula/index.html">
                             <img class="card-img-top" src="assets/450x300 marzo/collar rula.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1369,14 +1480,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Cadena-Rula/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-rula/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Perla https://brunaaccesorios.github.io/Collar-Perla/ assets/450x300 marzo/collar perla.jpg Collar Perla Cadena niquelada">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Perla/">
+                            <a href="productos/collar-perla/index.html">
                             <img class="card-img-top" src="assets/450x300 marzo/collar perla.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1392,14 +1503,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Perla/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-perla/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Fish https://brunaaccesorios.github.io/Collar-Fish/ assets/450x300 marzo/collar fish.jpg Collar Fish Cadena y dijes niquelados">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Fish/">
+                            <a href="productos/collar-fish/index.html">
                             <img class="card-img-top" src="assets/450x300 marzo/collar fish.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1415,14 +1526,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Fish/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-fish/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar CLic https://brunaaccesorios.github.io/Collar-Clic/ assets/450x300 marzo/collar clic.jpg Collar Clic Cadena y dijes niquelados">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Clic/">
+                            <a href="productos/collar-clic/index.html">
                             <img class="card-img-top" src="assets/450x300 marzo/collar clic.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1438,16 +1549,16 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Clic/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-clic/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Stella https://brunaaccesorios.github.io/Aros-Stella/ assets/450x300 marzo/aros stella.jpg Aros Stella Material: Fantas&#237;a">
                         <div class="card h-100">
                            
                          
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Stella/">
+                            <a href="productos/aros-stella/index.html">
                             <img class="card-img-top" src="assets/450x300 marzo/aros stella.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1463,14 +1574,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Stella/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-stella/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Spike https://brunaaccesorios.github.io/Aros-Spike/ assets/450x300 marzo/aros spike.jpg Argollitas Spike Acero Quirpurgico">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Spike/">
+                            <a href="productos/aros-spike/index.html">
                             <img class="card-img-top" src="assets/450x300 marzo/aros spike.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1486,15 +1597,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Spike/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-spike/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Pun https://brunaaccesorios.github.io/Aros-Pun/ assets/450x300 marzo/aros pun.jpg Argollitas Pun Acero Quir&#250;rgico">
                         <div class="card h-100">
            
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Pun/">
+                            <a href="productos/aros-pun/index.html">
                             <img class="card-img-top" src="assets/450x300 marzo/aros pun.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1510,15 +1621,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Pun/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-pun/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Maria https://brunaaccesorios.github.io/Aros-Maria/ assets/450x300 marzo/aros maria.jpg Aros Maria Acero Quir&#250;rgico">
                         <div class="card h-100">
                       
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Maria/">
+                            <a href="productos/aros-maria/index.html">
                             <img class="card-img-top" src="assets/450x300 marzo/aros maria.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1534,15 +1645,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Maria/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-maria/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Ester https://brunaaccesorios.github.io/Aros-Ester/ assets/450x300 marzo/aros ester.jpg Aros Ester Material: Fantas&#237;a">
                         <div class="card h-100">
                        
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Ester/">
+                            <a href="productos/aros-ester/index.html">
                             <img class="card-img-top" src="assets/450x300 marzo/aros ester.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1558,16 +1669,16 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Ester/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-ester/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Len Dorado https://brunaaccesorios.github.io/Collar-Len-Dorado/ assets/450x300 28-1/len dorado.jpg Collar Len Dorado Acero Dorado">
                         <div class="card h-100">
                   
         
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Len-Dorado/">
+                            <a href="productos/collar-len-dorado/index.html">
                             <img class="card-img-top" src="assets/450x300 28-1/len dorado.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1583,14 +1694,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Len-Dorado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-len-dorado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Kram Plateado https://brunaaccesorios.github.io/Collar-Kram-Plateado/ assets/450x300 28-1/kram plat.jpg Collar Kram Plateado Acero Quir&#250;rgico">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Kram-Plateado/">
+                            <a href="productos/collar-kram-plateado/index.html">
                             <img class="card-img-top" src="assets/450x300 28-1/kram plat.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1606,14 +1717,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Kram-Plateado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-kram-plateado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Kram Dorado https://brunaaccesorios.github.io/Collar-Kram-Dorado/ assets/450x300 28-1/kram dorado.jpg Collar Kram Dorado Acero Dorado">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Kram-Dorado/">
+                            <a href="productos/collar-kram-dorado/index.html">
                             <img class="card-img-top" src="assets/450x300 28-1/kram dorado.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1629,14 +1740,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Kram-Dorado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-kram-dorado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Kei https://brunaaccesorios.github.io/Collar-Kei/ assets/450x300 28-1/kei.jpg Collar Kei Acero Quir&#250;gico">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Kei/">
+                            <a href="productos/collar-kei/index.html">
                             <img class="card-img-top" src="assets/450x300 28-1/kei.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1652,17 +1763,17 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Kei/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-kei/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Perla Crema https://brunaaccesorios.github.io/Collar-Perla-Crema/ assets/450x300 29-12/collar perla crema.jpg Collar Perla Crema Se puede pedir con o sin dije (consultar dijes disponibles) Handmade">
                         <div class="card h-100">
                          
                         
                     
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Perla-Crema/">
+                            <a href="productos/collar-perla-crema/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/collar perla crema.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1678,14 +1789,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Perla-Crema/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-perla-crema/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Cuff Ruby Dorado https://brunaaccesorios.github.io/Cuff-Ruby-Dorado/ assets/450x300 29-12/cuff ruby dorado.jpg Cuff Ruby Dorado Aro cuff a presi&#243;n, de fantas&#237;a">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Cuff-Ruby-Dorado/">
+                            <a href="productos/cuff-ruby-dorado/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/cuff ruby dorado.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1701,14 +1812,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Cuff-Ruby-Dorado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/cuff-ruby-dorado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Jop Blanco https://brunaaccesorios.github.io/Collar-Jop-Blanco/ assets/450x300 29-12/collar jop blanco.jpg Collar Jop Blanco Unisex Handmade">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Jop-Blanco/">
+                            <a href="productos/collar-jop-blanco/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/collar jop blanco.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1724,14 +1835,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Jop-Blanco/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-jop-blanco/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Jop Bordo https://brunaaccesorios.github.io/Collar-Jop-Bordo/ assets/450x300 29-12/collar jop bordo.jpg Collar Jop Bordo Unisex Handmade">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Jop-Bordo/">
+                            <a href="productos/collar-jop-bordo/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/collar jop bordo.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1747,14 +1858,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Jop-Bordo/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-jop-bordo/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Fuego https://brunaaccesorios.github.io/Collar-Fuego/ assets/450x300 29-12/collar fuego.jpg Collar Fuego Se puede pedir con o sin dije (consultar dijes disponibles) Handmade">
                         <div class="card h-100">
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Fuego/">
+                            <a href="productos/collar-fuego/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/collar fuego.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1770,14 +1881,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Fuego/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-fuego/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Aqua https://brunaaccesorios.github.io/Collar-Aqua/ assets/450x300 29-12/collar aqua.jpg Collar Aqua Se puede pedir con o sin dije (consultar dijes disponibles) Handmade">
                         <div class="card h-100">
                               <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Aqua/">
+                            <a href="productos/collar-aqua/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/collar aqua.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1793,15 +1904,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Aqua/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-aqua/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Paris Plateada https://brunaaccesorios.github.io/Pulsera-Paris-Plateada/ assets/450x300 29-12/pulsera disco.jpg Pulsera Paris Plateadas Piedritas gris&#225;ceas y algunas plateadas, regulable Handmade">
                         <div class="card h-100">
                             
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Paris-Plateada/">
+                            <a href="productos/pulsera-paris-plateada/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/pulsera disco.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1817,14 +1928,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Paris-Plateada/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-paris-plateada/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Paris Blanca https://brunaaccesorios.github.io/Pulsera-Paris-Blanca/ assets/450x300 29-12/pulsera paris.jpg Pulsera Paris Blanca Piedritas blancas y algunas tornasoladas, regulable Handmade">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Paris-Blanca/">
+                            <a href="productos/pulsera-paris-blanca/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/pulsera paris.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1840,15 +1951,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Paris-Blanca/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-paris-blanca/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Fuego https://brunaaccesorios.github.io/Pulsera-Fuego/ assets/450x300 29-12/pulsera fuego.jpg Pulsera Fuego Regulable Handmade">
                         <div class="card h-100">
             
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Fuego/">
+                            <a href="productos/pulsera-fuego/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/pulsera fuego.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1864,14 +1975,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Fuego/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-fuego/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Aqua https://brunaaccesorios.github.io/Pulsera-Aqua/ assets/450x300 29-12/pulsera aqua.jpg Pulsera Aqua Regulable Handmade">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Aqua/">
+                            <a href="productos/pulsera-aqua/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/pulsera aqua.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1887,14 +1998,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Aqua/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-aqua/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Espiga https://brunaaccesorios.github.io/Pulsera-Espiga/ assets/450x300 29-12/pulsera espiga.jpg Pulsera Espiga Acero Quir&#250;rgico">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Espiga/">
+                            <a href="productos/pulsera-espiga/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/pulsera espiga.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1910,15 +2021,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Espiga/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-espiga/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Perla Beige https://brunaaccesorios.github.io/Collar-Perla-Beige/ assets/450x300 29-12/collar perla beige.jpg Collar Perla Beige Se puede pedir con o sin dije (consultar dijes disponibles) Handmade">
                         <div class="card h-100">
                             
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Perla-Beige/">
+                            <a href="productos/collar-perla-beige/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/collar perla beige.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1934,15 +2045,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Perla-Beige/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-perla-beige/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Plac https://brunaaccesorios.github.io/Collar-Plac/ assets/450x300 29-12/collar plac.jpg Collar Plac Acero Dorado">
                         <div class="card h-100">
                           
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Plac/">
+                            <a href="productos/collar-plac/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/collar plac.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1958,14 +2069,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Plac/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-plac/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Molly https://brunaaccesorios.github.io/Collar-Molly/ assets/450x300 29-12/collar molly.jpg Collar Molly Gamuza regulable (se puede pedir en negro-rojo-marr&#243;n-beige)">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Molly/">
+                            <a href="productos/collar-molly/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/collar molly.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -1981,14 +2092,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Molly/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-molly/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Koi https://brunaaccesorios.github.io/Collar-Koi/ assets/450x300 29-12/collar koi.jpg Collar Koi Gamuza regulable (se puede pedir en negro-rojo-marr&#243;n-beige)">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Koi/">
+                            <a href="productos/collar-koi/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/collar koi.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2004,14 +2115,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Koi/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-koi/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Mimy https://brunaaccesorios.github.io/Collar-Mimy/ assets/450x300 29-12/collar mimy.jpg Collar Mimy Gamuza regulable (se puede pedir en negro-rojo-marr&#243;n-beige)">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Mimy/">
+                            <a href="productos/collar-mimy/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/collar mimy.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2027,14 +2138,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Mimy/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-mimy/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Kali https://brunaaccesorios.github.io/collar-Kali/ assets/450x300 29-12/collar kali.jpg Collar Kali Gamuza regulable (se puede pedir en negro-rojo-marr&#243;n-beige)">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/collar-Kali/">
+                            <a href="productos/collar-kali/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/collar kali.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2050,14 +2161,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/collar-Kali/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-kali/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Giu https://brunaaccesorios.github.io/Collar-Giu/ assets/450x300 29-12/collar giu.jpg Collar Giu Gamuza regulable (se puede pedir en negro-rojo-marr&#243;n-beige)">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Giu/">
+                            <a href="productos/collar-giu/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/collar giu.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2073,14 +2184,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Giu/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-giu/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Fivvy https://brunaaccesorios.github.io/Collar-Fivvy/ assets/450x300 29-12/collar fivvy.jpg Collar Fivvy Gamuza regulable (se puede pedir en rojo-negro-marr&#243;n-beige)">
                         <div class="card h-100">
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Fivvy/">
+                            <a href="productos/collar-fivvy/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/collar fivvy.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2096,14 +2207,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Fivvy/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-fivvy/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Filippa https://brunaaccesorios.github.io/Collar-Filippa/ assets/450x300 29-12/collar filippa.jpg Collar Filippa Gamuza regulable (se puede pedir en color negro-rojo-marr&#243;n-beige)">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Filippa/">
+                            <a href="productos/collar-filippa/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/collar filippa.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2119,16 +2230,16 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Filippa/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-filippa/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Aros Vil https://brunaaccesorios.github.io/Aros-Vil/ assets/450x300 29-12/aros vil.jpg Aros Vil Acero Dorado">
                         <div class="card h-100">
                        
                            
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Aros-Vil/">
+                            <a href="productos/aros-vil/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/aros vil.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2144,16 +2255,16 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Aros-Vil/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/aros-vil/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Morocco https://brunaaccesorios.github.io/Collar-Morocco/ assets/450x300 15-12/collar morocco.jpg Collar Morocco Acero Dorado">
                         <div class="card h-100">
                             
                          
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Morocco/">
+                            <a href="productos/collar-morocco/index.html">
                             <img class="card-img-top" src="assets/450x300 15-12/collar morocco.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2169,16 +2280,16 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Morocco/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-morocco/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Kiki https://brunaaccesorios.github.io/Anillo-Kiki/ assets/450x300 15-12/kiki.jpg Anillo Kiki Acero Quir&#250;rgico Talle 19 (19 mm di&#225;metro interno) Talle 18 (18,4 mm di&#225;metro interno) Talle 17 (17,6 mm di&#225;metro interno)">
                         <div class="card h-100">
                           
                        
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Kiki/">
+                            <a href="productos/anillo-kiki/index.html">
                             <img class="card-img-top" src="assets/450x300 15-12/kiki.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2194,14 +2305,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Kiki/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-kiki/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Saudi https://brunaaccesorios.github.io/Anillo-Saudi/ assets/450x300 15-12/saudi.jpg Anillo Saudi Acero Quir&#250;rgico Talle 19 (19 mm di&#225;metro interno) Talle 18 (18,4 mm di&#225;metro interno) Talle 17 (17,6 mm di&#225;metro interno)">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Saudi/">
+                            <a href="productos/anillo-saudi/index.html">
                             <img class="card-img-top" src="assets/450x300 15-12/saudi.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2212,19 +2323,19 @@
                                     
                                     <!-- Product price-->
                                  
-                                    $7.000
+                                    $8.000
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Saudi/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-saudi/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Dul https://brunaaccesorios.github.io/Anillo-Dul/ assets/450x300 15-12/dul.jpg Anillo Dul Acero Quir&#250;rgico Talle 19 (19 mm di&#225;metro interno) Talle 18 (18,4 mm di&#225;metro interno) Talle 17 (17,6 mm di&#225;metro interno)">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Dul/">
+                            <a href="productos/anillo-dul/index.html">
                             <img class="card-img-top" src="assets/450x300 15-12/dul.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2235,19 +2346,19 @@
                                     
                                     <!-- Product price-->
                                  
-                                    $8.500
+                                    $8.000
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Dul/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-dul/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Lock https://brunaaccesorios.github.io/Collar-Lock/ assets/450x300 11-12/lock.jpg Collar Lock Acero Quir&#250;rgico Regulable Unisex">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Lock/">
+                            <a href="productos/collar-lock/index.html">
                             <img class="card-img-top" src="assets/450x300 11-12/lock.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2263,15 +2374,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Lock/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-lock/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Pix https://brunaaccesorios.github.io/Pulsera-Pix/ assets/450x300 11-12/pix.jpg Pulsera Pix Acero Quir&#250;rgico Regulable Unisex">
                         <div class="card h-100">
                     
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Pix/">
+                            <a href="productos/pulsera-pix/index.html">
                             <img class="card-img-top" src="assets/450x300 11-12/pix.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2287,15 +2398,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Pix/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-pix/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Lucky https://brunaaccesorios.github.io/Pulsera-Lucky/ assets/450x300 29-12/pulsera lucky.jpg Pulsera Lucky Acero Dorado">
                         <div class="card h-100">
 
                           <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Lucky/">
+                            <a href="productos/pulsera-lucky/index.html">
                             <img class="card-img-top" src="assets/450x300 29-12/pulsera lucky.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2311,15 +2422,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Lucky/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-lucky/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Bimba https://brunaaccesorios.github.io/Pulsera-Bimba/ assets/450x300 11-12/bimba.jpg Pulsera Bimba Acero Dorado Regulable">
                         <div class="card h-100">
 
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Bimba/">
+                            <a href="productos/pulsera-bimba/index.html">
                             <img class="card-img-top" src="assets/450x300 11-12/bimba.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2335,14 +2446,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Bimba/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-bimba/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Mora https://brunaaccesorios.github.io/Pulsera-Mora/ assets/450x300 11-12/mora.jpg Pulsera Mora Acero Dorado Regulable">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Mora/">
+                            <a href="productos/pulsera-mora/index.html">
                             <img class="card-img-top" src="assets/450x300 11-12/mora.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2358,15 +2469,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Mora/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-mora/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Rona https://brunaaccesorios.github.io/Pulsera-Rona/ assets/450x300 11-12/rona.jpg Pulsera Rona Acero Dorado Regulable Unisex">
                         <div class="card h-100">
                             
                              <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Rona/">
+                            <a href="productos/pulsera-rona/index.html">
                             <img class="card-img-top" src="assets/450x300 11-12/rona.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2382,11 +2493,11 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Rona/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-rona/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Lili Dorada https://brunaaccesorios.github.io/Pulsera-Lili-Dorada/ assets/450x300 7-12/lili dorada.jpg Pulsera Lili Dorada Acero dorado Unisex">
                         <div class="card h-100"> 
       
                   
@@ -2394,7 +2505,7 @@
                                    
                               
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Lili-Dorada/">
+                            <a href="productos/pulsera-lili-dorada/index.html">
                             <img class="card-img-top" src="assets/450x300 7-12/lili dorada.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2410,18 +2521,18 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Lili-Dorada/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-lili-dorada/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Argollitas Stella Grandes https://brunaaccesorios.github.io/Argollitas-Stella-Grandes/ assets/450x300 19-11/stella grandes.jpg Argollitas Stella Grandes Acero Quir&#250;rgico 2,8 cm di&#225;metro">
                         <div class="card h-100">
                           
                            
                               
                            
    <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Argollitas-Stella-Grandes/">
+                            <a href="productos/argollitas-stella-grandes/index.html">
                             <img class="card-img-top" src="assets/450x300 19-11/stella grandes.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2437,15 +2548,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Argollitas-Stella-Grandes/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/argollitas-stella-grandes/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Argollitas Stella Chicas https://brunaaccesorios.github.io/Argollitas-Stella-Chicas/ assets/450x300 19-11/stella chicas.jpg Argollitas Stella Chicas Acero Quir&#250;rgico 1,8 cm di&#225;metro">
                         <div class="card h-100">  
                  
  <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Argollitas-Stella-Chicas/">
+                            <a href="productos/argollitas-stella-chicas/index.html">
                             <img class="card-img-top" src="assets/450x300 19-11/stella chicas.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2461,15 +2572,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Argollitas-Stella-Chicas/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/argollitas-stella-chicas/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Pulsera Mandy Dorada https://brunaaccesorios.github.io/Pulsera-Mandy-Dorada/ assets/450x300 10-10/mandyd.jpg Pulsera Mandy Dorada Acero Dorado">
                         <div class="card h-100"> 
 
 <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Pulsera-Mandy-Dorada/">
+                            <a href="productos/pulsera-mandy-dorada/index.html">
                             <img class="card-img-top" src="assets/450x300 10-10/mandyd.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2485,16 +2596,16 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Pulsera-Mandy-Dorada/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/pulsera-mandy-dorada/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Artemisa https://brunaaccesorios.github.io/Anillo-Artemisa/ assets/450x300 10-10/artemisa.jpg Anillo Artemisa Acero Dorado Talle 17 (17,6 mm di&#225;metro interno) Talle 18 (18,4 mm di&#225;metro interno)">
                         <div class="card h-100"> 
 
        
     <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Artemisa/">
+                            <a href="productos/anillo-artemisa/index.html">
                             <img class="card-img-top" src="assets/450x300 10-10/artemisa.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2510,15 +2621,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Artemisa/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-artemisa/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Willow https://brunaaccesorios.github.io/Collar-Willow/ assets/450x300 10-10/willow.jpg Collar Willow Gamuza roja, dije niquelado">
                         <div class="card h-100">     
 
       <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Willow/">
+                            <a href="productos/collar-willow/index.html">
                             <img class="card-img-top" src="assets/450x300 10-10/willow.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2534,15 +2645,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Willow/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-willow/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Corbatín Tiana https://brunaaccesorios.github.io/Corbat-n-Tiana/ assets/450x300 10-10/tiana.jpg Corbat&#237;n Tiana Mostacillas, verde manzana">
                         <div class="card h-100">  
 
      <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Corbat-n-Tiana/">
+                            <a href="productos/corbatin-tiana/index.html">
                             <img class="card-img-top" src="assets/450x300 10-10/tiana.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2558,14 +2669,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Corbat-n-Tiana/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/corbatin-tiana/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Avery Plateado https://brunaaccesorios.github.io/Anillo-Avery-Plateado/ assets/450x300 10-10/averyp.jpg Anillo Avery Plateado Acero Talle 18 (18,4 mm di&#225;metro interno)">
                         <div class="card h-100">                                          
 <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Avery-Plateado/">
+                            <a href="productos/anillo-avery-plateado/index.html">
                             <img class="card-img-top" src="assets/450x300 10-10/averyp.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2576,20 +2687,20 @@
                                     
                                     <!-- Product price-->
                                  
-                                    $5.000
+                                    $6.000
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Avery-Plateado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-avery-plateado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Regina Gamuza https://brunaaccesorios.github.io/Collar-Regina-Gamuza/ assets/450x300 10-10/regina.jpg Collar Regina Gamuza Gamuza roja, dije niquelado">
                         <div class="card h-100"> 
 
 <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Regina-Gamuza/">
+                            <a href="productos/collar-regina-gamuza/index.html">
                             <img class="card-img-top" src="assets/450x300 10-10/regina.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2605,16 +2716,16 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Regina-Gamuza/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-regina-gamuza/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Aruba Marrón https://brunaaccesorios.github.io/Collar-Aruba-Marr-n/ assets/450x300 10-10/aruba m.jpg Collar Aruba Marr&#243;n Gamuza marr&#243;n, dije niquelado">
                         <div class="card h-100">   
 
 
 <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Aruba-Marr-n/">
+                            <a href="productos/collar-aruba-marron/index.html">
                             <img class="card-img-top" src="assets/450x300 10-10/aruba m.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2630,18 +2741,18 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Aruba-Marr-n/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-aruba-marron/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Aruba Rojo https://brunaaccesorios.github.io/Collar-Aruba-Rojo/ assets/450x300 10-10/aruba r.jpg Collar Aruba Rojo Gamuza roja, dije niquelado">
                         <div class="card h-100">  
 
                             
 
 
 <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Aruba-Rojo/">
+                            <a href="productos/collar-aruba-rojo/index.html">
                             <img class="card-img-top" src="assets/450x300 10-10/aruba r.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2657,16 +2768,16 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Aruba-Rojo/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-aruba-rojo/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Atenea Plateado https://brunaaccesorios.github.io/Anillo-Atenea-Plateado/ assets/450x300 10-10/ateneap.jpg Anillo Atenea Plateado Acero Talle 15 (15,4 mm di&#225;metro interno)">
                         <div class="card h-100">  
                             
 
 <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Atenea-Plateado/">
+                            <a href="productos/anillo-atenea-plateado/index.html">
                             <img class="card-img-top" src="assets/450x300 10-10/ateneap.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2677,19 +2788,19 @@
                                     
                                     <!-- Product price-->
                                  
-                                    $5.000
+                                    $6.000
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Atenea-Plateado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-atenea-plateado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Hera https://brunaaccesorios.github.io/Anillo-Hera/ assets/450x300/brunita-05.jpg Anillo Hera Acero quir&#250;rgico, talle 16 (16,4 mm di&#225;metro interno)">
                         <div class="card h-100">
    <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Hera/">
+                            <a href="productos/anillo-hera/index.html">
                             <img class="card-img-top" src="assets/450x300/brunita-05.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2700,20 +2811,20 @@
                                     
                                     <!-- Product price-->
                                  
-                                    $5.000
+                                    $6.000
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Hera/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-hera/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Kala https://brunaaccesorios.github.io/Collar-Kala/ assets/450x300 10-10/kala.jpg Collar Kala Gamuza roja, dije niquelado">
                         <div class="card h-100">  
                          
  <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Kala/">
+                            <a href="productos/collar-kala/index.html">
                             <img class="card-img-top" src="assets/450x300 10-10/kala.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2729,18 +2840,18 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Kala/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-kala/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Hestia https://brunaaccesorios.github.io/Anillo-Hestia/ assets/450x300 10-10/hestia.jpg Anillo Hestia Acero Dorado Talle 18 (18,4 mm di&#225;metro interno) Talle 19 (19 mm di&#225;metro interno)">
                         <div class="card h-100">  
 
      
 
 
 <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Hestia/">
+                            <a href="productos/anillo-hestia/index.html">
                             <img class="card-img-top" src="assets/450x300 10-10/hestia.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2756,16 +2867,16 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Hestia/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-hestia/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Agatha Dorado https://brunaaccesorios.github.io/Anillo-Agatha-Dorado/ assets/450x300 20-9/agatha.jpg Anillo Agatha Dorado Acero Dorado Talle 17 (17 mm)">
                         <div class="card h-100">        
 
 
       <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Agatha-Dorado/">
+                            <a href="productos/anillo-agatha-dorado/index.html">
                             <img class="card-img-top" src="assets/450x300 20-9/agatha.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2781,15 +2892,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Agatha-Dorado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-agatha-dorado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Afrodita Dorado https://brunaaccesorios.github.io/Anillo-Afrodita-Dorado-/ assets/450x300 20-9/afrodita.jpg Anillo Afrodita Dorado Acero Dorado Talle 17 (17 mm) Talle 18 (18,4 mm)">
                         <div class="card h-100"> 
 
      <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Afrodita-Dorado-/">
+                            <a href="productos/anillo-afrodita-dorado/index.html">
                             <img class="card-img-top" src="assets/450x300 20-9/afrodita.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2805,15 +2916,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Afrodita-Dorado-/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-afrodita-dorado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Polly https://brunaaccesorios.github.io/Anillo-Polly-Dorado/ assets/450x300 20-9/polly.jpg Anillo Polly Dorado Acero Dorado Talle 17 (17 mm) Talle 18 (18,4 mm)">
                         <div class="card h-100">  
 
     <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Polly-Dorado/">
+                            <a href="productos/anillo-polly/index.html">
                             <img class="card-img-top" src="assets/450x300 20-9/polly.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2829,17 +2940,17 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Polly-Dorado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-polly/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Corbatín Diana https://brunaaccesorios.github.io/Corbat-n-Diana/ assets/450x300 13-9/DIANA.jpg Corbat&#237;n Diana Mostacillas de vidrio Grises tornasoladas, con perlitas blancas tornasoladas 190 cm de largo total HANDMADE">
                         <div class="card h-100">  
 
  
 
 <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Corbat-n-Diana/">
+                            <a href="productos/corbatin-diana/index.html">
                             <img class="card-img-top" src="assets/450x300 13-9/DIANA.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2855,15 +2966,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Corbat-n-Diana/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/corbatin-diana/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Cristal (Marrón) https://brunaaccesorios.github.io/Collar-Cristal/ assets/450x300/brunita-12.jpg Collar Cristal (Marr&#243;n) Collar de gamuza marr&#243;n, ajustable">
                         <div class="card h-100">
                         
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Cristal/">
+                            <a href="productos/collar-cristal-marron/index.html">
                             <img class="card-img-top" src="assets/450x300/brunita-12.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2879,16 +2990,16 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Cristal/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-cristal-marron/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Corbatín Julia https://brunaaccesorios.github.io/Corbat-n-Julia/ assets/450x300 13-9/JULIA.jpg Corbat&#237;n Julia Mostacillas de vidrio 130 cm largo total Rojo HANDMADE">
                         <div class="card h-100">
 
 
                                     <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Corbat-n-Julia/">
+                            <a href="productos/corbatin-julia/index.html">
                             <img class="card-img-top" src="assets/450x300 13-9/JULIA.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2904,15 +3015,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Corbat-n-Julia/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/corbatin-julia/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Collar Regina https://brunaaccesorios.github.io/Collar-Regina/ assets/450x300 13-9/REGINA.jpg Collar Regina Cadena Niquelada">
                         <div class="card h-100">
                     
                             <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Collar-Regina/">
+                            <a href="productos/collar-regina/index.html">
                             <img class="card-img-top" src="assets/450x300 13-9/REGINA.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2928,15 +3039,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Collar-Regina/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/collar-regina/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Lennox Plateado https://brunaaccesorios.github.io/Anillo-Lennox-Plateado/ assets/450x300 10-10/lennoxp.jpg Anillo Lennox Plateado Acero Talle 16 (16,4 mm di&#225;metro interno)">
                         <div class="card h-100">
 
 <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Lennox-Plateado/">
+                            <a href="productos/anillo-lennox-plateado/index.html">
                             <img class="card-img-top" src="assets/450x300 10-10/lennoxp.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2947,22 +3058,22 @@
                                     
                                     <!-- Product price-->
                                  
-                                    $5.000
+                                    $6.000
                                 </div>
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Lennox-Plateado/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-lennox-plateado/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Cuff Vassety https://brunaaccesorios.github.io/Cuff-Vassety/ assets/Aros/fotos brunaa-10.jpg Cuff Vassety Acero quir&#250;rgico (grande-2,5 cm)">
                         <div class="card h-100">  
                             
 
                             
                                     <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Cuff-Vassety/">
+                            <a href="productos/cuff-vassety/index.html">
                             <img class="card-img-top" src="assets/Aros/fotos brunaa-10.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -2978,15 +3089,15 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Cuff-Vassety/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/cuff-vassety/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Lima https://brunaaccesorios.github.io/Anillo-Lima/ assets/450x300 10-10/lima.jpg Anillo Lima Acero Dorado Talle 17 (17,6 mm di&#225;metro interno) Talle 18 (18,4 mm di&#225;metro interno)">
                         <div class="card h-100">
 
      <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Lima/">
+                            <a href="productos/anillo-lima/index.html">
                             <img class="card-img-top" src="assets/450x300 10-10/lima.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -3002,16 +3113,16 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Lima/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-lima/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
-                    <div class="col mb-5">
+                    <div class="col mb-5" data-search="Anillo Malibu https://brunaaccesorios.github.io/Anillo-Malibu/ assets/450x300 10-10/malibu.jpg Anillo Malibu Acero Dorado Talle 18 (18,4 mm di&#225;metro interno) Talle 19 (19 mm di&#225;metro interno)">
                         <div class="card h-100">                       
                                   
               
   <!-- Product image-->
-                            <a href="https://brunaaccesorios.github.io/Anillo-Malibu/">
+                            <a href="productos/anillo-malibu/index.html">
                             <img class="card-img-top" src="assets/450x300 10-10/malibu.jpg" alt="..." />
                             </a>
                             <!-- Product details-->
@@ -3027,19 +3138,96 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="https://brunaaccesorios.github.io/Anillo-Malibu/">Ver más</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-malibu/index.html">Ver más</a></div>
                             </div>
                         </div>
                     </div>
                                                              
                             
                   
+                    <div class="col mb-5" data-search="Anillo Vienna Plateado productos/anillo-vienna-plateado/index.html assets/productos/anillo-vienna-plateado/vienna-plateado-01.jpg Anillo Vienna Plateado Acero Quir&#250;rgico">
+                        <div class="card h-100">
+                            <a href="productos/anillo-vienna-plateado/index.html">
+                                <img class="card-img-top" src="assets/productos/anillo-vienna-plateado/vienna-plateado-01.jpg" alt="Anillo Vienna Plateado" />
+                            </a>
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <h5 class="fw-bolder">Anillo Vienna Plateado</h5>
+                                    $8.000
+                                </div>
+                            </div>
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-vienna-plateado/index.html">Ver más</a></div>
+                            </div>
+                        </div>
+                    </div>                    <div class="col mb-5" data-search="Anillo Vienna Dorado productos/anillo-vienna-dorado/index.html assets/productos/anillo-vienna-dorado/vienna-dorado-01.jpg Anillo Vienna Dorado Acero Dorado">
+                        <div class="card h-100">
+                            <a href="productos/anillo-vienna-dorado/index.html">
+                                <img class="card-img-top" src="assets/productos/anillo-vienna-dorado/vienna-dorado-01.jpg" alt="Anillo Vienna Dorado" />
+                            </a>
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <h5 class="fw-bolder">Anillo Vienna Dorado</h5>
+                                    $8.000
+                                </div>
+                            </div>
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-vienna-dorado/index.html">Ver más</a></div>
+                            </div>
+                        </div>
+                    </div>                    <div class="col mb-5" data-search="Anillo Juana productos/anillo-juana/index.html assets/productos/anillo-juana/juana.jpg Anillo Juana Acero Quir&#250;rgico">
+                        <div class="card h-100">
+                            <a href="productos/anillo-juana/index.html">
+                                <img class="card-img-top" src="assets/productos/anillo-juana/juana.jpg" alt="Anillo Juana" />
+                            </a>
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <h5 class="fw-bolder">Anillo Juana</h5>
+                                    $8.000
+                                </div>
+                            </div>
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-juana/index.html">Ver más</a></div>
+                            </div>
+                        </div>
+                    </div>                    <div class="col mb-5" data-search="Anillo Sheila productos/anillo-sheila/index.html assets/productos/anillo-sheila/sheila-1-.jpg Anillo Sheila Acero">
+                        <div class="card h-100">
+                            <a href="productos/anillo-sheila/index.html">
+                                <img class="card-img-top" src="assets/productos/anillo-sheila/sheila-1-.jpg" alt="Anillo Sheila" />
+                            </a>
+                            <div class="card-body p-4">
+                                <div class="text-center">
+                                    <h5 class="fw-bolder">Anillo Sheila</h5>
+                                    $8.000
+                                </div>
+                            </div>
+                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="productos/anillo-sheila/index.html">Ver más</a></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="bruna-load-more-wrap">
+                    <button class="bruna-load-more" type="button">Ver más productos</button>
                 </div>
             </div>
         </section>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Bruna</p></div>
+                <footer class="bruna-footer">
+            <div class="container px-4 px-lg-5 bruna-footer-inner">
+                <a class="bruna-footer-logo" href="index.html" aria-label="Ir al inicio de Bruna">
+                    <img src="assets/marca/hero-bruna-05.jpg" alt="Bruna" />
+                </a>
+                <div class="bruna-footer-social" aria-label="Redes y contacto">
+                    <a href="https://wa.me/5491164282208?text=Hola!%20Necesito%20m%C3%A1s%20informaci%C3%B3n!" target="_blank" rel="noopener" aria-label="Hablar por WhatsApp">
+                        <i class="bi bi-whatsapp"></i>
+                    </a>
+                    <a href="https://www.instagram.com/bbruna_accesorios/" target="_blank" rel="noopener" aria-label="Instagram @bbruna_accesorios">
+                        <i class="bi bi-instagram"></i>
+                    </a>
+                </div>
+                <p>@bbruna_accesorios</p>
+            </div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

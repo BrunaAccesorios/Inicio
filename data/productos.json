@@ -1,0 +1,18 @@
+[
+  {
+    "slug": "aros-drop-dorados",
+    "nombre": "Aros Drop Dorados",
+    "precio": "$12.000",
+    "descripcion": "Aros con función clic, cómodos para usar todo el día: no molestan ni lastiman.",
+    "material": "Acero Dorado",
+    "categoria": "Aros",
+    "subcategoria": "Acero Dorado",
+    "imagenPrincipal": "assets/productos/aros-drop-dorados/drop-dorados-01.jpg",
+    "imagenes": [
+      "assets/productos/aros-drop-dorados/drop-dorados-01.jpg",
+      "assets/productos/aros-drop-dorados/drop-dorados-02.jpg",
+      "assets/productos/aros-drop-dorados/drop-dorados-03.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  }
+]
