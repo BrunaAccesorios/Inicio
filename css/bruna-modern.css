@@ -80,6 +80,26 @@ body {
   line-height: 1;
 }
 
+.bruna-cart-toggle {
+  position: relative;
+}
+
+.bruna-cart-count {
+  position: absolute;
+  top: 0.1rem;
+  right: 0.08rem;
+  min-width: 17px;
+  height: 17px;
+  padding: 0 0.25rem;
+  border-radius: 999px;
+  background: var(--bruna-navy);
+  color: #fff;
+  font-size: 0.68rem;
+  font-weight: 900;
+  line-height: 17px;
+  text-align: center;
+}
+
 .nav-link,
 .dropdown-item {
   color: var(--bruna-ink) !important;
@@ -812,32 +832,29 @@ body {
 
 .card {
   position: relative;
-  overflow: hidden;
+  overflow: visible;
   border: 0;
-  border-radius: 14px;
-  background: var(--bruna-navy);
+  border-radius: 0;
+  background: transparent;
   transition: transform 180ms ease, box-shadow 180ms ease;
 }
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 18px 34px rgba(25, 23, 22, 0.12);
+  box-shadow: none;
 }
 
 .card-img-top {
   aspect-ratio: 0.86 / 1;
   object-fit: cover;
   display: block;
+  overflow: hidden;
+  border-radius: 14px;
   transition: transform 220ms ease;
 }
 
 .card::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  pointer-events: none;
-  background: linear-gradient(180deg, rgba(7, 20, 48, 0) 48%, rgba(7, 20, 48, 0.74) 100%);
+  content: none;
 }
 
 .card:hover .card-img-top {
@@ -882,54 +899,72 @@ body {
 }
 
 .card-body {
-  position: absolute;
-  right: 0;
-  bottom: 0;
-  left: 0;
-  z-index: 2;
-  padding: 1rem 1rem 1.05rem !important;
-  color: #fff;
+  position: static;
+  z-index: auto;
+  padding: 0.7rem 0.2rem 0 !important;
+  color: var(--bruna-navy);
 }
 
 .card-footer {
-  display: none;
+  display: block;
+  padding: 0.55rem 0.2rem 0 !important;
+  border: 0 !important;
+  background: transparent !important;
+}
+
+.card-footer .text-center {
+  display: flex;
+  justify-content: center;
 }
 
 .card-footer .btn {
-  width: 100%;
-  min-height: 34px;
-  border-color: rgba(255, 255, 255, 0.72);
-  color: #fff;
-  background: rgba(255, 255, 255, 0.08);
-  backdrop-filter: blur(10px);
-  font-size: 0.88rem;
-  padding: 0.35rem 0.65rem;
+  display: none;
 }
 
-.card-footer .btn:hover {
-  border-color: #fff;
-  background: #fff;
+.bruna-add-to-cart {
+  width: 38px;
+  height: 38px;
+  display: inline-grid;
+  place-items: center;
+  padding: 0;
+  border: 1px solid rgba(16, 44, 99, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
   color: var(--bruna-navy);
+  box-shadow: 0 10px 22px rgba(16, 44, 99, 0.08);
+  transition: background 160ms ease, color 160ms ease, border-color 160ms ease;
+}
+
+.bruna-add-to-cart i {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.bruna-add-to-cart:hover,
+.bruna-add-to-cart:focus {
+  border-color: var(--bruna-navy);
+  background: var(--bruna-navy);
+  color: #fff;
 }
 
 .card .fw-bolder {
   font-family: Georgia, "Times New Roman", serif;
   font-weight: 500 !important;
   font-size: 1.06rem;
-  color: #fff;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.35);
+  color: var(--bruna-navy);
+  text-shadow: none;
 }
 
 .bruna-card-price {
   display: block;
   margin-top: 0.35rem;
-  color: #fff;
+  color: var(--bruna-navy);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   font-size: 1.18rem;
   font-weight: 950;
   line-height: 1;
   letter-spacing: 0;
-  text-shadow: 0 1px 12px rgba(0, 0, 0, 0.38);
+  text-shadow: none;
 }
 
 .btn-outline-dark,
@@ -1111,6 +1146,232 @@ body {
   color: #fff;
 }
 
+.bruna-product-add-cart {
+  border-color: var(--bruna-navy);
+  background: var(--bruna-navy);
+  color: #fff;
+}
+
+.bruna-product-add-cart:hover {
+  background: var(--bruna-ink);
+  color: #fff;
+}
+
+.bruna-product-info .bruna-whatsapp:not(.bruna-product-add-cart):not(.is-disabled),
+.bruna-product-info .bruna-whatsapp:not(.bruna-product-add-cart):not(.is-disabled) + .bruna-helper {
+  display: none;
+}
+
+.bruna-cart-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 1600;
+  background: rgba(16, 44, 99, 0.28);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+}
+
+.bruna-cart-drawer {
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 1700;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  width: min(430px, 100vw);
+  height: 100dvh;
+  background: var(--bruna-paper);
+  box-shadow: -24px 0 52px rgba(16, 44, 99, 0.18);
+  transform: translateX(100%);
+  transition: transform 220ms ease;
+}
+
+.bruna-cart-open {
+  overflow: hidden;
+}
+
+.bruna-cart-open .bruna-cart-backdrop {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.bruna-cart-open .bruna-cart-drawer {
+  transform: translateX(0);
+}
+
+.bruna-cart-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1.2rem 1.25rem 1rem;
+  border-bottom: 1px solid var(--bruna-line);
+}
+
+.bruna-cart-header span {
+  color: var(--bruna-soft-gold);
+  font-size: 0.76rem;
+  font-weight: 900;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.bruna-cart-header h2 {
+  margin: 0.2rem 0 0;
+  color: var(--bruna-navy);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.75rem;
+}
+
+.bruna-cart-items {
+  display: grid;
+  align-content: start;
+  gap: 0.9rem;
+  padding: 1rem 1.25rem;
+  overflow-y: auto;
+}
+
+.bruna-cart-empty {
+  margin: 0;
+  color: var(--bruna-muted);
+  font-weight: 700;
+}
+
+.bruna-cart-item {
+  position: relative;
+  display: grid;
+  grid-template-columns: 82px 1fr auto;
+  gap: 0.8rem;
+  padding-bottom: 0.9rem;
+  border-bottom: 1px solid rgba(16, 44, 99, 0.11);
+}
+
+.bruna-cart-item img {
+  width: 82px;
+  height: 98px;
+  border-radius: 10px;
+  object-fit: cover;
+}
+
+.bruna-cart-item-info h3 {
+  margin: 0;
+  color: var(--bruna-navy);
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 1.05rem;
+  line-height: 1.15;
+}
+
+.bruna-cart-item-info p,
+.bruna-cart-item-info strong {
+  display: block;
+  margin: 0.35rem 0 0;
+  color: var(--bruna-ink);
+  font-size: 0.9rem;
+}
+
+.bruna-cart-item-info strong {
+  font-weight: 900;
+}
+
+.bruna-cart-quantity {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 0.65rem;
+  border: 1px solid rgba(16, 44, 99, 0.16);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.46);
+}
+
+.bruna-cart-quantity button {
+  width: 30px;
+  height: 30px;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  color: var(--bruna-navy);
+  font-weight: 900;
+}
+
+.bruna-cart-quantity span {
+  min-width: 18px;
+  color: var(--bruna-navy);
+  font-weight: 900;
+  text-align: center;
+}
+
+.bruna-cart-remove {
+  width: 34px;
+  height: 34px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(16, 44, 99, 0.08);
+  color: var(--bruna-navy);
+}
+
+.bruna-cart-summary {
+  display: grid;
+  gap: 0.75rem;
+  padding: 1rem 1.25rem 1.25rem;
+  border-top: 1px solid var(--bruna-line);
+  background: rgba(255, 250, 246, 0.98);
+}
+
+.bruna-cart-summary label {
+  display: grid;
+  gap: 0.35rem;
+  color: var(--bruna-navy);
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.bruna-cart-summary input,
+.bruna-cart-summary select {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid rgba(16, 44, 99, 0.18);
+  border-radius: 10px;
+  background: #fff;
+  color: var(--bruna-ink);
+  padding: 0 0.8rem;
+  outline: none;
+}
+
+.bruna-cart-summary input:focus,
+.bruna-cart-summary select:focus {
+  border-color: var(--bruna-navy);
+}
+
+.bruna-cart-total-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--bruna-muted);
+  font-size: 0.94rem;
+}
+
+.bruna-cart-total-row strong {
+  color: var(--bruna-navy);
+  font-size: 1.15rem;
+  font-weight: 950;
+}
+
+.bruna-cart-checkout {
+  min-height: 48px;
+  border: 1px solid var(--bruna-navy);
+  border-radius: 999px;
+  background: var(--bruna-navy);
+  color: #fff;
+  font-weight: 900;
+}
+
+.bruna-cart-checkout:disabled {
+  cursor: not-allowed;
+  opacity: 0.45;
+}
+
 .bruna-helper {
   margin-top: 1rem;
   color: var(--bruna-muted);
@@ -1123,6 +1384,10 @@ body {
   color: var(--bruna-ink);
   font-weight: 700;
   text-decoration: none;
+}
+
+.bruna-product-info .bruna-back {
+  display: none;
 }
 
 .bruna-footer {
@@ -1411,16 +1676,17 @@ body {
   }
 
   .card-body {
-    bottom: 0;
-    padding: 0.75rem !important;
+    padding: 0.58rem 0.15rem 0 !important;
   }
 
   .card .fw-bolder {
-    font-size: 0.95rem;
+    font-size: 0.92rem;
+    line-height: 1.15;
   }
 
   .bruna-card-price {
-    font-size: 1.08rem;
+    margin-top: 0.28rem;
+    font-size: 1.04rem;
     font-weight: 950;
   }
 

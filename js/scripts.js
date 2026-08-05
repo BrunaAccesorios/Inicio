@@ -357,3 +357,368 @@ if (carouselPrev && carouselNext) {
   carouselPrev.addEventListener("click", () => scrollFeaturedCarousel(-1));
   carouselNext.addEventListener("click", () => scrollFeaturedCarousel(1));
 }
+
+const CART_STORAGE_KEY = "brunaCart";
+const BRUNA_WHATSAPP_NUMBER = "5491164282208";
+
+function formatARS(value) {
+  return new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "ARS",
+    maximumFractionDigits: 0,
+  }).format(value);
+}
+
+function parseARS(value) {
+  const cleanValue = String(value || "").replace(/[^\d]/g, "");
+  return cleanValue ? Number(cleanValue) : 0;
+}
+
+function loadCart() {
+  try {
+    const savedCart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || "[]");
+    return Array.isArray(savedCart) ? savedCart : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveCart(cart) {
+  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+}
+
+function normalizeCartUrl(url) {
+  return new URL(url, window.location.href).pathname.replace(/\/index\.html$/, "/");
+}
+
+function getProductFromCard(card) {
+  const link = card.querySelector("a[href*='productos/']");
+  const image = card.querySelector(".card-img-top");
+  const name = card.querySelector(".fw-bolder")?.textContent.trim() || "";
+  const priceText = card.querySelector(".bruna-card-price")?.textContent.trim() || "";
+  const isOutOfStock = card.querySelector(".bruna-stock-badge")?.textContent.toLowerCase().includes("sin stock");
+
+  if (!link || !image || !name || !priceText || isOutOfStock) {
+    return null;
+  }
+
+  return {
+    id: normalizeCartUrl(link.href),
+    name,
+    price: parseARS(priceText),
+    image: image.src,
+    url: link.href,
+  };
+}
+
+function getProductFromDetailPage() {
+  const title = document.querySelector(".bruna-product-title");
+  const price = document.querySelector(".bruna-product-price");
+  const image = document.querySelector("#product-main-image");
+  const disabledBuy = document.querySelector(".bruna-whatsapp.is-disabled");
+
+  if (!title || !price || !image || disabledBuy) {
+    return null;
+  }
+
+  return {
+    id: window.location.pathname.replace(/\/index\.html$/, "/"),
+    name: title.textContent.trim(),
+    price: parseARS(price.textContent),
+    image: image.src,
+    url: window.location.href,
+  };
+}
+
+function getCartTotals(cart = loadCart()) {
+  return cart.reduce(
+    (totals, item) => {
+      totals.quantity += item.quantity;
+      totals.price += item.price * item.quantity;
+      return totals;
+    },
+    { quantity: 0, price: 0 },
+  );
+}
+
+function addToCart(product) {
+  if (!product || !product.price) {
+    return;
+  }
+
+  const cart = loadCart();
+  const currentItem = cart.find((item) => item.id === product.id);
+
+  if (currentItem) {
+    currentItem.quantity += 1;
+  } else {
+    cart.push({ ...product, quantity: 1 });
+  }
+
+  saveCart(cart);
+  renderCart();
+  openCart();
+}
+
+function updateCartQuantity(id, nextQuantity) {
+  const cart = loadCart();
+  const item = cart.find((cartItem) => cartItem.id === id);
+
+  if (!item) {
+    return;
+  }
+
+  item.quantity = Math.max(1, nextQuantity);
+  saveCart(cart);
+  renderCart();
+}
+
+function removeFromCart(id) {
+  saveCart(loadCart().filter((item) => item.id !== id));
+  renderCart();
+}
+
+function openCart() {
+  document.body.classList.add("bruna-cart-open");
+  document.querySelector(".bruna-cart-drawer")?.setAttribute("aria-hidden", "false");
+}
+
+function closeCart() {
+  document.body.classList.remove("bruna-cart-open");
+  document.querySelector(".bruna-cart-drawer")?.setAttribute("aria-hidden", "true");
+}
+
+function buildCartMessage(cart, customerName, paymentMethod) {
+  const lines = ["Hola, quiero realizar el siguiente pedido:", ""];
+
+  cart.forEach((item) => {
+    lines.push(`• ${item.quantity}x ${item.name}`);
+    lines.push(`Precio unitario: ${formatARS(item.price)}`);
+    lines.push(`Subtotal: ${formatARS(item.price * item.quantity)}`);
+    lines.push("");
+  });
+
+  lines.push(`Total del pedido: ${formatARS(getCartTotals(cart).price)}`);
+  lines.push("");
+  lines.push(`Nombre: ${customerName || "[nombre del cliente]"}`);
+  lines.push(`Método de pago: ${paymentMethod || "[transferencia o efectivo]"}`);
+
+  return lines.join("\n");
+}
+
+function renderCart() {
+  const cart = loadCart();
+  const itemsWrap = document.querySelector(".bruna-cart-items");
+  const countElements = document.querySelectorAll(".bruna-cart-count");
+  const totalProducts = document.querySelector(".bruna-cart-total-products");
+  const totalPrice = document.querySelector(".bruna-cart-total-price");
+  const checkoutButton = document.querySelector(".bruna-cart-checkout");
+  const totals = getCartTotals(cart);
+
+  countElements.forEach((count) => {
+    count.textContent = String(totals.quantity);
+    count.hidden = totals.quantity === 0;
+  });
+
+  if (!itemsWrap || !totalProducts || !totalPrice || !checkoutButton) {
+    return;
+  }
+
+  itemsWrap.innerHTML = "";
+
+  if (!cart.length) {
+    itemsWrap.innerHTML = '<p class="bruna-cart-empty">Tu carrito está vacío.</p>';
+  } else {
+    cart.forEach((item) => {
+      const itemElement = document.createElement("article");
+      itemElement.className = "bruna-cart-item";
+      itemElement.innerHTML = `
+        <img src="${item.image}" alt="${item.name}" />
+        <div class="bruna-cart-item-info">
+          <h3>${item.name}</h3>
+          <p>${formatARS(item.price)}</p>
+          <strong>Subtotal: ${formatARS(item.price * item.quantity)}</strong>
+          <div class="bruna-cart-quantity" aria-label="Cantidad">
+            <button type="button" data-cart-decrease="${item.id}" aria-label="Restar unidad">-</button>
+            <span>${item.quantity}</span>
+            <button type="button" data-cart-increase="${item.id}" aria-label="Sumar unidad">+</button>
+          </div>
+        </div>
+        <button class="bruna-cart-remove" type="button" data-cart-remove="${item.id}" aria-label="Eliminar ${item.name}">
+          <i class="bi bi-trash"></i>
+        </button>
+      `;
+      itemsWrap.append(itemElement);
+    });
+  }
+
+  totalProducts.textContent = String(totals.quantity);
+  totalPrice.textContent = formatARS(totals.price);
+  checkoutButton.disabled = cart.length === 0;
+}
+
+function createCartDrawer() {
+  if (document.querySelector(".bruna-cart-drawer")) {
+    return;
+  }
+
+  document.body.insertAdjacentHTML(
+    "beforeend",
+    `
+      <div class="bruna-cart-backdrop" data-cart-close></div>
+      <aside class="bruna-cart-drawer" aria-hidden="true" aria-label="Carrito de compras">
+        <div class="bruna-cart-header">
+          <div>
+            <span>Pedido</span>
+            <h2>Tu carrito</h2>
+          </div>
+          <button class="bruna-icon-button" type="button" data-cart-close aria-label="Cerrar carrito">
+            <i class="bi bi-x-lg"></i>
+          </button>
+        </div>
+        <div class="bruna-cart-items"></div>
+        <div class="bruna-cart-summary">
+          <label>
+            Nombre
+            <input class="bruna-cart-name" type="text" placeholder="Tu nombre" autocomplete="name" />
+          </label>
+          <label>
+            Método de pago
+            <select class="bruna-cart-payment">
+              <option value="Transferencia">Transferencia</option>
+              <option value="Efectivo">Efectivo</option>
+            </select>
+          </label>
+          <div class="bruna-cart-total-row">
+            <span>Total de productos</span>
+            <strong class="bruna-cart-total-products">0</strong>
+          </div>
+          <div class="bruna-cart-total-row">
+            <span>Total del pedido</span>
+            <strong class="bruna-cart-total-price">$0</strong>
+          </div>
+          <button class="bruna-cart-checkout" type="button">Finalizar pedido por WhatsApp</button>
+        </div>
+      </aside>
+    `,
+  );
+}
+
+function createCartHeaderButton() {
+  const headerActions = document.querySelector(".bruna-header-actions");
+
+  if (!headerActions || headerActions.querySelector(".bruna-cart-toggle")) {
+    return;
+  }
+
+  if (!headerActions.querySelector(".bruna-home-toggle")) {
+    const homeLink = document.createElement("a");
+    homeLink.className = "bruna-icon-button bruna-home-toggle";
+    homeLink.href = document.querySelector(".navbar-brand")?.getAttribute("href") || "index.html";
+    homeLink.setAttribute("aria-label", "Volver al inicio");
+    homeLink.innerHTML = '<i class="bi bi-house"></i>';
+    headerActions.insertBefore(homeLink, headerActions.firstChild);
+  }
+
+  const cartButton = document.createElement("button");
+  cartButton.className = "bruna-icon-button bruna-cart-toggle";
+  cartButton.type = "button";
+  cartButton.setAttribute("aria-label", "Abrir carrito");
+  cartButton.innerHTML = '<i class="bi bi-bag"></i><span class="bruna-cart-count" hidden>0</span>';
+
+  const menuButton = headerActions.querySelector(".bruna-menu-toggle");
+  headerActions.insertBefore(cartButton, menuButton || null);
+  cartButton.addEventListener("click", openCart);
+}
+
+function createCatalogCartButtons() {
+  document.querySelectorAll(".bruna-product-grid .card").forEach((card) => {
+    const product = getProductFromCard(card);
+    const footer = card.querySelector(".card-footer .text-center");
+
+    if (!product || !footer || footer.querySelector(".bruna-add-to-cart")) {
+      return;
+    }
+
+    const button = document.createElement("button");
+    button.className = "bruna-add-to-cart";
+    button.type = "button";
+    button.setAttribute("aria-label", `Agregar ${product.name} al carrito`);
+    button.innerHTML = '<i class="bi bi-bag"></i>';
+    button.addEventListener("click", (event) => {
+      event.preventDefault();
+      addToCart(product);
+    });
+    footer.append(button);
+  });
+}
+
+function createProductCartButton() {
+  const product = getProductFromDetailPage();
+  const productInfo = document.querySelector(".bruna-product-info");
+  const whatsappButton = document.querySelector(".bruna-product-info .bruna-whatsapp");
+
+  if (!product || !productInfo || productInfo.querySelector(".bruna-product-add-cart")) {
+    return;
+  }
+
+  const button = document.createElement("button");
+  button.className = "bruna-whatsapp bruna-product-add-cart";
+  button.type = "button";
+  button.textContent = "Agregar al carrito";
+  button.addEventListener("click", () => addToCart(product));
+
+  if (whatsappButton) {
+    whatsappButton.insertAdjacentElement("beforebegin", button);
+  } else {
+    productInfo.append(button);
+  }
+}
+
+function setupCart() {
+  createCartHeaderButton();
+  createCartDrawer();
+  createCatalogCartButtons();
+  createProductCartButton();
+  renderCart();
+
+  document.addEventListener("click", (event) => {
+    const closeTrigger = event.target.closest("[data-cart-close]");
+    const increaseId = event.target.closest("[data-cart-increase]")?.dataset.cartIncrease;
+    const decreaseId = event.target.closest("[data-cart-decrease]")?.dataset.cartDecrease;
+    const removeId = event.target.closest("[data-cart-remove]")?.dataset.cartRemove;
+
+    if (closeTrigger) {
+      closeCart();
+    }
+
+    if (increaseId) {
+      const item = loadCart().find((cartItem) => cartItem.id === increaseId);
+      updateCartQuantity(increaseId, (item?.quantity || 1) + 1);
+    }
+
+    if (decreaseId) {
+      const item = loadCart().find((cartItem) => cartItem.id === decreaseId);
+      updateCartQuantity(decreaseId, (item?.quantity || 1) - 1);
+    }
+
+    if (removeId) {
+      removeFromCart(removeId);
+    }
+  });
+
+  document.querySelector(".bruna-cart-checkout")?.addEventListener("click", () => {
+    const cart = loadCart();
+
+    if (!cart.length) {
+      return;
+    }
+
+    const customerName = document.querySelector(".bruna-cart-name")?.value.trim() || "";
+    const paymentMethod = document.querySelector(".bruna-cart-payment")?.value || "";
+    const message = buildCartMessage(cart, customerName, paymentMethod);
+    window.open(`https://wa.me/${BRUNA_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+  });
+}
+
+setupCart();
