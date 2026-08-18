@@ -1389,6 +1389,46 @@ body {
   border-color: var(--bruna-navy);
 }
 
+.bruna-cart-coupon {
+  display: grid;
+  gap: 0.35rem;
+}
+
+.bruna-cart-coupon > div {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 0.45rem;
+}
+
+.bruna-cart-coupon-apply {
+  min-height: 42px;
+  border: 1px solid var(--bruna-navy);
+  border-radius: 999px;
+  background: var(--bruna-navy);
+  color: #fff;
+  padding: 0 0.9rem;
+  font-size: 0.78rem;
+  font-weight: 900;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.bruna-cart-coupon-message {
+  min-height: 1rem;
+  margin: 0;
+  color: var(--bruna-navy);
+  font-size: 0.78rem;
+  font-weight: 800;
+}
+
+.bruna-cart-coupon-message.is-error {
+  color: #9b2335;
+}
+
+.bruna-cart-discount-row strong {
+  color: #1f7a4f;
+}
+
 .bruna-cart-total-row {
   display: flex;
   align-items: center;

@@ -359,8 +359,10 @@ if (carouselPrev && carouselNext) {
 }
 
 const CART_STORAGE_KEY = "brunaCart";
+const CART_COUPON_STORAGE_KEY = "brunaCartCoupon";
 const BRUNA_WHATSAPP_NUMBER = "5491164282208";
 const BRUNA_DISCOUNT_PERCENT = 20;
+const BRUNA_DISCOUNT_CODE = "CUMPLEBRUNA";
 const BRUNA_OUT_OF_STOCK_SLUGS = [
   "anillo-brisa-plateado",
   "aros-glanz-dorados",
@@ -394,42 +396,15 @@ function getDiscountPrice(price) {
   return Math.round(price * (100 - BRUNA_DISCOUNT_PERCENT) / 100);
 }
 
-function renderDiscountPrice(element) {
-  if (!element || element.dataset.discountApplied === "true") {
-    return;
-  }
-
-  const originalPrice = parseARS(element.textContent);
-
-  if (!originalPrice) {
-    return;
-  }
-
-  const discountedPrice = getDiscountPrice(originalPrice);
-  element.dataset.originalPrice = String(originalPrice);
-  element.dataset.discountPrice = String(discountedPrice);
-  element.dataset.discountApplied = "true";
-  element.innerHTML = `
-    <span class="bruna-price-original">${formatARS(originalPrice)}</span>
-    <span class="bruna-price-discount">${formatARS(discountedPrice)}</span>
-    <span class="bruna-discount-label">${BRUNA_DISCOUNT_PERCENT}% OFF</span>
-  `;
+function isCouponApplied() {
+  return localStorage.getItem(CART_COUPON_STORAGE_KEY) === BRUNA_DISCOUNT_CODE;
 }
 
-function applyDiscounts() {
-  document.querySelectorAll(".bruna-product-grid .card").forEach((card) => {
-    const isOutOfStock = card.querySelector(".bruna-stock-badge")?.textContent.toLowerCase().includes("sin stock");
-
-    if (!isOutOfStock) {
-      renderDiscountPrice(card.querySelector(".bruna-card-price"));
-    }
-  });
-
-  const detailPrice = document.querySelector(".bruna-product-price");
-  const disabledBuy = document.querySelector(".bruna-whatsapp.is-disabled");
-
-  if (detailPrice && !disabledBuy) {
-    renderDiscountPrice(detailPrice);
+function saveCouponApplied(isApplied) {
+  if (isApplied) {
+    localStorage.setItem(CART_COUPON_STORAGE_KEY, BRUNA_DISCOUNT_CODE);
+  } else {
+    localStorage.removeItem(CART_COUPON_STORAGE_KEY);
   }
 }
 
@@ -448,7 +423,7 @@ function loadCart() {
       return {
         ...item,
         originalPrice,
-        price: getDiscountPrice(originalPrice),
+        price: originalPrice,
       };
     });
   } catch {
@@ -479,7 +454,7 @@ function getProductFromCard(card) {
   return {
     id: normalizeCartUrl(link.href),
     name,
-    price: Number(priceElement?.dataset.discountPrice) || getDiscountPrice(parseARS(priceText)),
+    price: Number(priceElement?.dataset.originalPrice) || parseARS(priceText),
     originalPrice: Number(priceElement?.dataset.originalPrice) || parseARS(priceText),
     image: image.src,
     url: link.href,
@@ -499,22 +474,26 @@ function getProductFromDetailPage() {
   return {
     id: window.location.pathname.replace(/\/index\.html$/, "/"),
     name: title.textContent.trim(),
-    price: Number(price.dataset.discountPrice) || getDiscountPrice(parseARS(price.textContent)),
+    price: Number(price.dataset.originalPrice) || parseARS(price.textContent),
     originalPrice: Number(price.dataset.originalPrice) || parseARS(price.textContent),
     image: image.src,
     url: window.location.href,
   };
 }
 
-function getCartTotals(cart = loadCart()) {
-  return cart.reduce(
+function getCartTotals(cart = loadCart(), couponApplied = isCouponApplied()) {
+  const totals = cart.reduce(
     (totals, item) => {
       totals.quantity += item.quantity;
-      totals.price += item.price * item.quantity;
+      totals.subtotal += item.originalPrice * item.quantity;
       return totals;
     },
-    { quantity: 0, price: 0 },
+    { quantity: 0, subtotal: 0, discount: 0, price: 0 },
   );
+
+  totals.discount = couponApplied ? Math.round(totals.subtotal * BRUNA_DISCOUNT_PERCENT / 100) : 0;
+  totals.price = totals.subtotal - totals.discount;
+  return totals;
 }
 
 function addToCart(product) {
@@ -565,16 +544,23 @@ function closeCart() {
 }
 
 function buildCartMessage(cart, customerName, paymentMethod) {
+  const couponApplied = isCouponApplied();
+  const totals = getCartTotals(cart, couponApplied);
   const lines = ["Hola, quiero realizar el siguiente pedido:", ""];
 
   cart.forEach((item) => {
     lines.push(`• ${item.quantity}x ${item.name}`);
-    lines.push(`Precio unitario: ${formatARS(item.price)}`);
-    lines.push(`Subtotal: ${formatARS(item.price * item.quantity)}`);
+    lines.push(`Precio unitario: ${formatARS(item.originalPrice)}`);
+    lines.push(`Subtotal: ${formatARS(item.originalPrice * item.quantity)}`);
     lines.push("");
   });
 
-  lines.push(`Total del pedido: ${formatARS(getCartTotals(cart).price)}`);
+  if (couponApplied) {
+    lines.push(`Cupón aplicado: ${BRUNA_DISCOUNT_CODE} (${BRUNA_DISCOUNT_PERCENT}% OFF)`);
+    lines.push(`Descuento: -${formatARS(totals.discount)}`);
+  }
+
+  lines.push(`Total del pedido: ${formatARS(totals.price)}`);
   lines.push("");
   lines.push(`Nombre: ${customerName || "[nombre del cliente]"}`);
   lines.push(`Método de pago: ${paymentMethod || "[transferencia o efectivo]"}`);
@@ -587,16 +573,22 @@ function renderCart() {
   const itemsWrap = document.querySelector(".bruna-cart-items");
   const countElements = document.querySelectorAll(".bruna-cart-count");
   const totalProducts = document.querySelector(".bruna-cart-total-products");
+  const subtotalPrice = document.querySelector(".bruna-cart-subtotal-price");
+  const discountRow = document.querySelector(".bruna-cart-discount-row");
+  const discountPrice = document.querySelector(".bruna-cart-discount-price");
   const totalPrice = document.querySelector(".bruna-cart-total-price");
+  const couponInput = document.querySelector(".bruna-cart-coupon-input");
+  const couponMessage = document.querySelector(".bruna-cart-coupon-message");
   const checkoutButton = document.querySelector(".bruna-cart-checkout");
-  const totals = getCartTotals(cart);
+  const couponApplied = isCouponApplied();
+  const totals = getCartTotals(cart, couponApplied);
 
   countElements.forEach((count) => {
     count.textContent = String(totals.quantity);
     count.hidden = totals.quantity === 0;
   });
 
-  if (!itemsWrap || !totalProducts || !totalPrice || !checkoutButton) {
+  if (!itemsWrap || !totalProducts || !subtotalPrice || !discountRow || !discountPrice || !totalPrice || !checkoutButton) {
     return;
   }
 
@@ -612,8 +604,8 @@ function renderCart() {
         <img src="${item.image}" alt="${item.name}" />
         <div class="bruna-cart-item-info">
           <h3>${item.name}</h3>
-          <p>${formatARS(item.price)}</p>
-          <strong>Subtotal: ${formatARS(item.price * item.quantity)}</strong>
+          <p>${formatARS(item.originalPrice)}</p>
+          <strong>Subtotal: ${formatARS(item.originalPrice * item.quantity)}</strong>
           <div class="bruna-cart-quantity" aria-label="Cantidad">
             <button type="button" data-cart-decrease="${item.id}" aria-label="Restar unidad">-</button>
             <span>${item.quantity}</span>
@@ -629,7 +621,17 @@ function renderCart() {
   }
 
   totalProducts.textContent = String(totals.quantity);
+  subtotalPrice.textContent = formatARS(totals.subtotal);
+  discountRow.hidden = !couponApplied;
+  discountPrice.textContent = `-${formatARS(totals.discount)}`;
   totalPrice.textContent = formatARS(totals.price);
+  if (couponInput && couponApplied) {
+    couponInput.value = BRUNA_DISCOUNT_CODE;
+  }
+  if (couponMessage) {
+    couponMessage.textContent = couponApplied ? `${BRUNA_DISCOUNT_PERCENT}% de descuento aplicado.` : "";
+    couponMessage.classList.toggle("is-error", false);
+  }
   checkoutButton.disabled = cart.length === 0;
 }
 
@@ -665,9 +667,25 @@ function createCartDrawer() {
               <option value="Efectivo">Efectivo</option>
             </select>
           </label>
+          <div class="bruna-cart-coupon">
+            <label for="bruna-cart-coupon">Código de descuento</label>
+            <div>
+              <input id="bruna-cart-coupon" class="bruna-cart-coupon-input" type="text" placeholder="Escribe" autocomplete="off" />
+              <button class="bruna-cart-coupon-apply" type="button">Aplicar</button>
+            </div>
+            <p class="bruna-cart-coupon-message" aria-live="polite"></p>
+          </div>
           <div class="bruna-cart-total-row">
             <span>Total de productos</span>
             <strong class="bruna-cart-total-products">0</strong>
+          </div>
+          <div class="bruna-cart-total-row">
+            <span>Subtotal</span>
+            <strong class="bruna-cart-subtotal-price">$0</strong>
+          </div>
+          <div class="bruna-cart-total-row bruna-cart-discount-row" hidden>
+            <span>Descuento</span>
+            <strong class="bruna-cart-discount-price">-$0</strong>
           </div>
           <div class="bruna-cart-total-row">
             <span>Total del pedido</span>
@@ -795,7 +813,32 @@ function setupCart() {
     const message = buildCartMessage(cart, customerName, paymentMethod);
     window.open(`https://wa.me/${BRUNA_WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`, "_blank", "noopener");
   });
+
+  document.querySelector(".bruna-cart-coupon-apply")?.addEventListener("click", () => {
+    const input = document.querySelector(".bruna-cart-coupon-input");
+    const message = document.querySelector(".bruna-cart-coupon-message");
+    const code = input?.value.trim().toUpperCase() || "";
+
+    if (code === BRUNA_DISCOUNT_CODE) {
+      saveCouponApplied(true);
+      renderCart();
+      return;
+    }
+
+    saveCouponApplied(false);
+    renderCart();
+    if (message) {
+      message.textContent = "Código inválido.";
+      message.classList.add("is-error");
+    }
+  });
+
+  document.querySelector(".bruna-cart-coupon-input")?.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      document.querySelector(".bruna-cart-coupon-apply")?.click();
+    }
+  });
 }
 
-applyDiscounts();
 setupCart();
