@@ -956,7 +956,9 @@ body {
 }
 
 .bruna-card-price {
-  display: block;
+  display: grid;
+  justify-items: center;
+  gap: 0.18rem;
   margin-top: 0.35rem;
   color: var(--bruna-navy);
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
@@ -965,6 +967,37 @@ body {
   line-height: 1;
   letter-spacing: 0;
   text-shadow: none;
+}
+
+.bruna-price-original {
+  color: var(--bruna-muted);
+  font-size: 0.82rem;
+  font-weight: 750;
+  line-height: 1;
+  text-decoration: line-through;
+  text-decoration-thickness: 1.5px;
+}
+
+.bruna-price-discount {
+  color: var(--bruna-navy);
+  font-size: 1.2rem;
+  font-weight: 950;
+  line-height: 1;
+}
+
+.bruna-discount-label {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: fit-content;
+  margin-top: 0.1rem;
+  padding: 0.16rem 0.42rem;
+  border-radius: 999px;
+  background: rgba(16, 44, 99, 0.08);
+  color: var(--bruna-navy);
+  font-size: 0.65rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
 }
 
 .btn-outline-dark,
@@ -1096,12 +1129,25 @@ body {
 }
 
 .bruna-product-price {
-  display: inline-flex;
+  display: inline-grid;
+  gap: 0.32rem;
   margin: 0.2rem 0 1.4rem;
   padding: 0.4rem 0;
   color: var(--bruna-ink);
   font-size: clamp(1.7rem, 3vw, 2.4rem);
   font-weight: 900;
+}
+
+.bruna-product-price .bruna-price-original {
+  font-size: clamp(1rem, 1.5vw, 1.2rem);
+}
+
+.bruna-product-price .bruna-price-discount {
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+}
+
+.bruna-product-price .bruna-discount-label {
+  justify-self: start;
 }
 
 .bruna-product-description {
@@ -1686,8 +1732,20 @@ body {
 
   .bruna-card-price {
     margin-top: 0.28rem;
-    font-size: 1.04rem;
     font-weight: 950;
+  }
+
+  .bruna-price-original {
+    font-size: 0.72rem;
+  }
+
+  .bruna-price-discount {
+    font-size: 1.06rem;
+  }
+
+  .bruna-discount-label {
+    padding: 0.14rem 0.34rem;
+    font-size: 0.58rem;
   }
 
   .bruna-carousel-track {

@@ -360,6 +360,22 @@ if (carouselPrev && carouselNext) {
 
 const CART_STORAGE_KEY = "brunaCart";
 const BRUNA_WHATSAPP_NUMBER = "5491164282208";
+const BRUNA_DISCOUNT_PERCENT = 20;
+const BRUNA_OUT_OF_STOCK_SLUGS = [
+  "anillo-brisa-plateado",
+  "aros-glanz-dorados",
+  "aros-lisa-dorados",
+  "aros-lula",
+  "aros-maria",
+  "aros-rent",
+  "aros-serena",
+  "aros-sol",
+  "collar-molly",
+  "collar-regina",
+  "pulsera-mandy-dorada",
+  "pulsera-pix",
+  "pulsera-union",
+];
 
 function formatARS(value) {
   return new Intl.NumberFormat("es-AR", {
@@ -374,10 +390,67 @@ function parseARS(value) {
   return cleanValue ? Number(cleanValue) : 0;
 }
 
+function getDiscountPrice(price) {
+  return Math.round(price * (100 - BRUNA_DISCOUNT_PERCENT) / 100);
+}
+
+function renderDiscountPrice(element) {
+  if (!element || element.dataset.discountApplied === "true") {
+    return;
+  }
+
+  const originalPrice = parseARS(element.textContent);
+
+  if (!originalPrice) {
+    return;
+  }
+
+  const discountedPrice = getDiscountPrice(originalPrice);
+  element.dataset.originalPrice = String(originalPrice);
+  element.dataset.discountPrice = String(discountedPrice);
+  element.dataset.discountApplied = "true";
+  element.innerHTML = `
+    <span class="bruna-price-original">${formatARS(originalPrice)}</span>
+    <span class="bruna-price-discount">${formatARS(discountedPrice)}</span>
+    <span class="bruna-discount-label">${BRUNA_DISCOUNT_PERCENT}% OFF</span>
+  `;
+}
+
+function applyDiscounts() {
+  document.querySelectorAll(".bruna-product-grid .card").forEach((card) => {
+    const isOutOfStock = card.querySelector(".bruna-stock-badge")?.textContent.toLowerCase().includes("sin stock");
+
+    if (!isOutOfStock) {
+      renderDiscountPrice(card.querySelector(".bruna-card-price"));
+    }
+  });
+
+  const detailPrice = document.querySelector(".bruna-product-price");
+  const disabledBuy = document.querySelector(".bruna-whatsapp.is-disabled");
+
+  if (detailPrice && !disabledBuy) {
+    renderDiscountPrice(detailPrice);
+  }
+}
+
 function loadCart() {
   try {
     const savedCart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || "[]");
-    return Array.isArray(savedCart) ? savedCart : [];
+    if (!Array.isArray(savedCart)) {
+      return [];
+    }
+
+    return savedCart.filter((item) => {
+      const itemId = String(item.id || "");
+      return !BRUNA_OUT_OF_STOCK_SLUGS.some((slug) => itemId.includes(`/productos/${slug}/`));
+    }).map((item) => {
+      const originalPrice = Number(item.originalPrice) || Number(item.price) || 0;
+      return {
+        ...item,
+        originalPrice,
+        price: getDiscountPrice(originalPrice),
+      };
+    });
   } catch {
     return [];
   }
@@ -395,7 +468,8 @@ function getProductFromCard(card) {
   const link = card.querySelector("a[href*='productos/']");
   const image = card.querySelector(".card-img-top");
   const name = card.querySelector(".fw-bolder")?.textContent.trim() || "";
-  const priceText = card.querySelector(".bruna-card-price")?.textContent.trim() || "";
+  const priceElement = card.querySelector(".bruna-card-price");
+  const priceText = priceElement?.textContent.trim() || "";
   const isOutOfStock = card.querySelector(".bruna-stock-badge")?.textContent.toLowerCase().includes("sin stock");
 
   if (!link || !image || !name || !priceText || isOutOfStock) {
@@ -405,7 +479,8 @@ function getProductFromCard(card) {
   return {
     id: normalizeCartUrl(link.href),
     name,
-    price: parseARS(priceText),
+    price: Number(priceElement?.dataset.discountPrice) || getDiscountPrice(parseARS(priceText)),
+    originalPrice: Number(priceElement?.dataset.originalPrice) || parseARS(priceText),
     image: image.src,
     url: link.href,
   };
@@ -424,7 +499,8 @@ function getProductFromDetailPage() {
   return {
     id: window.location.pathname.replace(/\/index\.html$/, "/"),
     name: title.textContent.trim(),
-    price: parseARS(price.textContent),
+    price: Number(price.dataset.discountPrice) || getDiscountPrice(parseARS(price.textContent)),
+    originalPrice: Number(price.dataset.originalPrice) || parseARS(price.textContent),
     image: image.src,
     url: window.location.href,
   };
@@ -721,4 +797,5 @@ function setupCart() {
   });
 }
 
+applyDiscounts();
 setupCart();
