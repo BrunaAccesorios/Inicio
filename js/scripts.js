@@ -364,6 +364,9 @@ const BRUNA_WHATSAPP_NUMBER = "5491164282208";
 const BRUNA_DISCOUNT_PERCENT = 20;
 const BRUNA_DISCOUNT_CODE = "CUMPLEBRUNA";
 const BRUNA_OUT_OF_STOCK_SLUGS = [
+  "pulsera-mora",
+  "pulsera-lucky",
+  "aros-colette-dorados",
   "anillo-brisa-plateado",
   "aros-glanz-dorados",
   "aros-lisa-dorados",
