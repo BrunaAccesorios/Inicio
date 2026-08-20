@@ -99,8 +99,27 @@ const searchEmptyMessage = document.querySelector(".bruna-search-empty");
 const filterLinks = document.querySelectorAll(".bruna-filter-link");
 const categoryLinks = document.querySelectorAll(".bruna-category-link");
 const pageCatalogFilter = document.body.dataset.catalogFilter?.trim() || "";
-let visibleProductCount = pageCatalogFilter ? Number.POSITIVE_INFINITY : 18;
+const isSearchPage = document.body.dataset.searchPage === "true";
+const urlSearchTerm = new URLSearchParams(window.location.search).get("q")?.trim() || "";
+let visibleProductCount = pageCatalogFilter || isSearchPage ? Number.POSITIVE_INFINITY : 18;
 let activeSearchTerm = pageCatalogFilter;
+
+function getSiteRootUrl() {
+  const script = document.querySelector('script[src$="js/scripts.js"]');
+  return new URL("../", script?.src || window.location.href);
+}
+
+function goToSearchPage(query) {
+  const cleanQuery = query.trim();
+
+  if (!cleanQuery) {
+    return;
+  }
+
+  const searchUrl = new URL("buscar/index.html", getSiteRootUrl());
+  searchUrl.searchParams.set("q", cleanQuery);
+  window.location.href = searchUrl.href;
+}
 
 function saveCatalogReturnPoint() {
   if (!catalogProducts.length) {
@@ -235,7 +254,24 @@ if (catalogProducts.length) {
   const savedVisibleCount = Number(sessionStorage.getItem("brunaCatalogVisibleCount") || "");
   const savedCatalogSearchTerm = sessionStorage.getItem("brunaCatalogSearchTerm") || "";
 
-  if (pageCatalogFilter) {
+  if (isSearchPage) {
+    activeSearchTerm = urlSearchTerm;
+
+    if (productSearch) {
+      productSearch.value = urlSearchTerm;
+    }
+
+    const searchTitle = document.querySelector(".bruna-search-title");
+    const searchCopy = document.querySelector(".bruna-search-copy");
+
+    if (searchTitle && urlSearchTerm) {
+      searchTitle.textContent = `Resultados para "${urlSearchTerm}"`;
+    }
+
+    if (searchCopy) {
+      searchCopy.textContent = urlSearchTerm ? "Productos encontrados según tu búsqueda." : "Escribí un producto, material o categoría.";
+    }
+  } else if (pageCatalogFilter) {
     activeSearchTerm = pageCatalogFilter;
     sessionStorage.removeItem("brunaProductSearch");
 
@@ -288,28 +324,39 @@ if (catalogProducts.length) {
     link.addEventListener("click", saveCatalogReturnPoint);
   });
 
-  productSearch?.addEventListener("input", () => {
-    activeSearchTerm = productSearch.value.trim();
-    updateCatalogVisibility();
+  const submitProductSearch = () => {
+    const query = productSearch.value.trim();
+    goToSearchPage(query);
+  };
 
-    if (activeSearchTerm) {
-      document.querySelector("#catalogo")?.scrollIntoView({
-        behavior: "smooth",
-        block: "start",
-      });
+  productSearch.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      submitProductSearch();
     }
   });
+
+  headerSearch?.querySelector("span")?.addEventListener("click", submitProductSearch);
+
+  if (isSearchPage) {
+    productSearch?.addEventListener("input", () => {
+      activeSearchTerm = productSearch.value.trim();
+      updateCatalogVisibility();
+
+      const nextUrl = new URL(window.location.href);
+      if (activeSearchTerm) {
+        nextUrl.searchParams.set("q", activeSearchTerm);
+      } else {
+        nextUrl.searchParams.delete("q");
+      }
+      window.history.replaceState({}, "", nextUrl);
+    });
+  }
 
 } else if (productSearch) {
   const submitProductSearch = () => {
     const query = productSearch.value.trim();
-
-    if (!query) {
-      return;
-    }
-
-    sessionStorage.setItem("brunaProductSearch", query);
-    window.location.href = "../../index.html#catalogo";
+    goToSearchPage(query);
   };
 
   productSearch.addEventListener("keydown", (event) => {
