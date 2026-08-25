@@ -427,6 +427,12 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "pulsera-mandy-dorada",
   "pulsera-pix",
   "pulsera-union",
+  "collar-regina-gamuza",
+  "cuff-ruby-dorado",
+  "aros-link",
+  "anillo-simone",
+  "aros-italia",
+  "anillo-grace",
 ];
 
 function formatARS(value) {
