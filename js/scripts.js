@@ -92,6 +92,18 @@ document.querySelectorAll(".bruna-product-grid .card .text-center").forEach((det
   });
 });
 
+document.querySelectorAll(".bruna-product-grid").forEach((grid) => {
+  const products = Array.from(grid.querySelectorAll(":scope > .col"));
+  const sortedProducts = products.slice().sort((first, second) => {
+    const firstOutOfStock = first.querySelector(".bruna-stock-badge") ? 1 : 0;
+    const secondOutOfStock = second.querySelector(".bruna-stock-badge") ? 1 : 0;
+
+    return firstOutOfStock - secondOutOfStock;
+  });
+
+  sortedProducts.forEach((product) => grid.appendChild(product));
+});
+
 const catalogProducts = Array.from(document.querySelectorAll(".bruna-product-grid > .col"));
 const loadMoreButton = document.querySelector(".bruna-load-more");
 const productSearch = document.querySelector("#product-search");
@@ -413,25 +425,19 @@ const BRUNA_DISCOUNT_CODE = "CUMPLEBRUNA";
 const BRUNA_OUT_OF_STOCK_SLUGS = [
   "pulsera-mora",
   "pulsera-lucky",
-  "aros-colette-dorados",
   "anillo-brisa-plateado",
   "aros-glanz-dorados",
-  "aros-lisa-dorados",
   "aros-lula",
   "aros-maria",
   "aros-rent",
-  "aros-serena",
   "aros-sol",
   "collar-molly",
   "collar-regina",
   "pulsera-mandy-dorada",
-  "pulsera-pix",
-  "pulsera-union",
   "collar-regina-gamuza",
   "cuff-ruby-dorado",
   "aros-link",
   "anillo-simone",
-  "aros-italia",
   "anillo-grace",
 ];
 
