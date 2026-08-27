@@ -439,6 +439,10 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "aros-link",
   "anillo-simone",
   "anillo-grace",
+  "collar-rocio",
+  "collar-anto-blanco",
+  "pulsera-bianca",
+  "anillo-glu",
 ];
 
 function formatARS(value) {
