@@ -428,7 +428,6 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "anillo-brisa-plateado",
   "aros-glanz-dorados",
   "aros-lula",
-  "aros-maria",
   "aros-rent",
   "aros-sol",
   "collar-molly",
@@ -442,11 +441,7 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "collar-rocio",
   "collar-anto-blanco",
   "pulsera-bianca",
-  "anillo-glu",
-  "anillo-astra",
-  "pulsera-dora",
   "aros-hexo",
-  "pulsera-chain-brillos",
 ];
 
 function formatARS(value) {
