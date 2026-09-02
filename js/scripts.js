@@ -422,6 +422,7 @@ const CART_COUPON_STORAGE_KEY = "brunaCartCoupon";
 const BRUNA_WHATSAPP_NUMBER = "5491164282208";
 const BRUNA_DISCOUNT_PERCENT = 20;
 const BRUNA_DISCOUNT_CODE = "CUMPLEBRUNA";
+const BRUNA_DISCOUNT_ENABLED = false;
 const BRUNA_OUT_OF_STOCK_SLUGS = [
   "pulsera-mora",
   "pulsera-lucky",
@@ -442,6 +443,11 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "collar-anto-blanco",
   "pulsera-bianca",
   "aros-hexo",
+  "pulsera-tina",
+  "anillo-lali",
+  "anillo-glu",
+  "pulsera-lili-dorada",
+  "collar-kala",
 ];
 
 function formatARS(value) {
@@ -462,11 +468,11 @@ function getDiscountPrice(price) {
 }
 
 function isCouponApplied() {
-  return localStorage.getItem(CART_COUPON_STORAGE_KEY) === BRUNA_DISCOUNT_CODE;
+  return BRUNA_DISCOUNT_ENABLED && localStorage.getItem(CART_COUPON_STORAGE_KEY) === BRUNA_DISCOUNT_CODE;
 }
 
 function saveCouponApplied(isApplied) {
-  if (isApplied) {
+  if (isApplied && BRUNA_DISCOUNT_ENABLED) {
     localStorage.setItem(CART_COUPON_STORAGE_KEY, BRUNA_DISCOUNT_CODE);
   } else {
     localStorage.removeItem(CART_COUPON_STORAGE_KEY);
@@ -884,7 +890,7 @@ function setupCart() {
     const message = document.querySelector(".bruna-cart-coupon-message");
     const code = input?.value.trim().toUpperCase() || "";
 
-    if (code === BRUNA_DISCOUNT_CODE) {
+    if (code === BRUNA_DISCOUNT_CODE && BRUNA_DISCOUNT_ENABLED) {
       saveCouponApplied(true);
       renderCart();
       return;
@@ -893,7 +899,7 @@ function setupCart() {
     saveCouponApplied(false);
     renderCart();
     if (message) {
-      message.textContent = "Código inválido.";
+      message.textContent = code === BRUNA_DISCOUNT_CODE ? "El código ya no está vigente." : "Código inválido.";
       message.classList.add("is-error");
     }
   });
