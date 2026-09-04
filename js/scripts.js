@@ -424,6 +424,10 @@ const BRUNA_DISCOUNT_PERCENT = 20;
 const BRUNA_DISCOUNT_CODE = "CUMPLEBRUNA";
 const BRUNA_DISCOUNT_ENABLED = false;
 const BRUNA_OUT_OF_STOCK_SLUGS = [
+  "collar-giu",
+  "aros-maria",
+  "combo-x3-cala-plateado",
+  "anillo-sirus",
   "pulsera-mora",
   "pulsera-lucky",
   "anillo-brisa-plateado",
