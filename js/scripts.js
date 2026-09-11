@@ -104,6 +104,21 @@ document.querySelectorAll(".bruna-product-grid").forEach((grid) => {
   sortedProducts.forEach((product) => grid.appendChild(product));
 });
 
+function normalizeCatalogCards() {
+  document.querySelectorAll(".bruna-product-grid > *").forEach((product) => {
+    product.classList.add("bruna-card-column");
+
+    const card = product.querySelector(".card");
+    const image = product.querySelector(".card-img-top");
+    const imageFrame = image?.closest("a") || image?.parentElement;
+
+    card?.classList.add("bruna-normalized-card");
+    imageFrame?.classList.add("bruna-card-image-frame");
+  });
+}
+
+normalizeCatalogCards();
+
 const catalogProducts = Array.from(document.querySelectorAll(".bruna-product-grid > .col"));
 const loadMoreButton = document.querySelector(".bruna-load-more");
 const productSearch = document.querySelector("#product-search");
@@ -117,7 +132,7 @@ let visibleProductCount = pageCatalogFilter || isSearchPage ? Number.POSITIVE_IN
 let activeSearchTerm = pageCatalogFilter;
 
 function getSiteRootUrl() {
-  const script = document.querySelector('script[src$="js/scripts.js"]');
+  const script = document.querySelector('script[src*="js/scripts.js"]');
   return new URL("../", script?.src || window.location.href);
 }
 
@@ -451,18 +466,51 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "pulsera-mandy-dorada",
   "collar-regina-gamuza",
   "cuff-ruby-dorado",
-  "aros-link",
-  "anillo-simone",
-  "anillo-grace",
-  "collar-rocio",
-  "collar-anto-blanco",
-  "pulsera-bianca",
+  "aros-link",  "anillo-grace",
+  "collar-rocio",  "pulsera-bianca",
   "aros-hexo",
   "pulsera-tina",
   "anillo-lali",
-  "anillo-glu",
-  "pulsera-lili-dorada",
-  "collar-kala",
+  "anillo-glu",  "aros-italia",
+  "anillo-lavanda-plateado",
+  "anillo-malena",
+  "anillo-maison",
+  "anillo-turb-plateado",
+  "anillo-vienna-dorado",
+  "anillo-spike",
+  "aros-love",
+  "aros-perla",
+  "aros-flash",
+  "anillo-floppy",
+  "aros-francesca-dorados",
+  "combo-x3-cala-dorado",
+  "cuff-rope",
+  "argollitas-renata-plateadas",
+  "argollitas-renata-doradas",
+  "argollitas-nox",
+  "anillo-arctic",
+  "aros-serena",
+  "anillo-aria-dorado",
+  "anillo-aria-plateado",
+  "anillo-camille",
+  "anillo-capri",
+  "anillo-dul-dorado",
+  "anillo-fiorella",
+  "anillo-frost",
+  "anillo-iris",
+  "anillo-monaco-dorado",
+  "anillo-monaco-plateado",
+  "aros-dona-dorados",
+  "aros-cleo",
+  "anillo-nova-plateado",
+  "anillo-dul",
+  "pulsera-rona",
+  "anillo-artemisa",
+  "anillo-avery-plateado",
+  "anillo-atenea-plateado",
+  "anillo-hera",
+  "anillo-agatha-dorado",
+  "anillo-afrodita-dorado",
 ];
 
 function formatARS(value) {
