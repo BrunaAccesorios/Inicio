@@ -631,7 +631,7 @@ body {
 
 .bruna-carousel-track {
   display: grid;
-  grid-auto-columns: minmax(210px, 22vw);
+  grid-auto-columns: minmax(150px, 18vw);
   grid-auto-flow: column;
   gap: 0.85rem;
   overflow-x: auto;
@@ -671,7 +671,9 @@ body {
 
 .bruna-carousel-card {
   position: relative;
-  min-height: 290px;
+  aspect-ratio: 0.86 / 1;
+  height: auto;
+  min-height: 0;
   overflow: hidden;
   border-radius: 14px;
   color: #fff;
@@ -774,11 +776,13 @@ body {
   display: grid !important;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 0.85rem;
+  align-items: start;
 }
 
 .bruna-product-grid > .col {
   width: auto;
   max-width: none;
+  min-width: 0;
   padding: 0;
   margin-bottom: 0 !important;
 }
@@ -832,6 +836,8 @@ body {
 
 .card {
   position: relative;
+  width: 100%;
+  min-width: 0;
   overflow: visible;
   border: 0;
   border-radius: 0;
@@ -844,12 +850,22 @@ body {
   box-shadow: none;
 }
 
-.card-img-top {
+.bruna-product-grid .card > a {
+  display: block;
+  width: 100%;
   aspect-ratio: 0.86 / 1;
+  overflow: hidden;
+  border-radius: 14px;
+}
+
+.card-img-top {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: auto;
   object-fit: cover;
   display: block;
   overflow: hidden;
-  border-radius: 14px;
+  border-radius: 0;
   transition: transform 220ms ease;
 }
 
@@ -1802,12 +1818,14 @@ body {
   }
 
   .bruna-carousel-track {
-    grid-auto-columns: minmax(170px, 74vw);
+    grid-auto-columns: minmax(135px, 44vw);
     padding-inline: 0.15rem;
   }
 
   .bruna-carousel-card {
-    min-height: 250px;
+    aspect-ratio: 0.86 / 1;
+    height: auto;
+    min-height: 0;
   }
 
   .bruna-carousel-arrow {
@@ -1831,5 +1849,67 @@ body {
 
   .bruna-main-image {
     aspect-ratio: 1 / 1.18;
+  }
+}
+
+/* Final catalog guard: all product cards must keep the same compact size. */
+.bruna-product-grid {
+  display: flex !important;
+  flex-wrap: wrap !important;
+  justify-content: flex-start !important;
+  align-items: start !important;
+  gap: 0.85rem !important;
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+}
+
+.bruna-product-grid > .col {
+  grid-column: auto !important;
+  grid-row: auto !important;
+  flex: 0 0 calc((100% - 3.4rem) / 5) !important;
+  width: calc((100% - 3.4rem) / 5) !important;
+  max-width: calc((100% - 3.4rem) / 5) !important;
+  min-width: 0 !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+  margin-bottom: 0.85rem !important;
+}
+
+.bruna-product-grid .card {
+  width: 100% !important;
+  min-width: 0 !important;
+}
+
+.bruna-product-grid .card > a {
+  display: block !important;
+  width: 100% !important;
+  aspect-ratio: 0.86 / 1 !important;
+  overflow: hidden !important;
+  border-radius: 14px !important;
+}
+
+.bruna-product-grid .card-img-top {
+  width: 100% !important;
+  height: 100% !important;
+  max-width: 100% !important;
+  max-height: none !important;
+  object-fit: cover !important;
+  display: block !important;
+  border-radius: 0 !important;
+}
+
+@media (max-width: 900px) {
+  .bruna-product-grid > .col {
+    flex-basis: calc((100% - 1.7rem) / 3) !important;
+    width: calc((100% - 1.7rem) / 3) !important;
+    max-width: calc((100% - 1.7rem) / 3) !important;
+  }
+}
+
+@media (max-width: 560px) {
+  .bruna-product-grid > .col {
+    flex-basis: calc((100% - 0.65rem) / 2) !important;
+    width: calc((100% - 0.65rem) / 2) !important;
+    max-width: calc((100% - 0.65rem) / 2) !important;
   }
 }
