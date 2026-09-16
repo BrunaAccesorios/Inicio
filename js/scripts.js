@@ -445,7 +445,6 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "anillo-astra",
   "collar-loop",
   "collar-tuli",
-  "anillo-sol-dorado",
   "collar-qix",
   "aros-drop-plateados",
   "aros-drop-dorados",
