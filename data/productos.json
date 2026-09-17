@@ -1,5 +1,127 @@
 [
   {
+    "slug": "pulsera-helly-dorada",
+    "nombre": "Pulsera Helly Dorada",
+    "precio": "$15.000",
+    "descripcion": "Pulsera de acero dorado.",
+    "material": "Acero Dorado",
+    "categoria": "Pulseras",
+    "subcategoria": "Acero Dorado",
+    "imagenPrincipal": "assets/productos/pulsera-helly-dorada/pulsera-helly-dorada-01.jpg",
+    "imagenes": [
+      "assets/productos/pulsera-helly-dorada/pulsera-helly-dorada-01.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "pulsera-lily-plateada",
+    "nombre": "Pulsera Lily Plateada",
+    "precio": "$8.000",
+    "descripcion": "Pulsera de acero quirúrgico.",
+    "material": "Acero Quirúrgico",
+    "categoria": "Pulseras",
+    "subcategoria": "Acero Quirúrgico",
+    "imagenPrincipal": "assets/productos/pulsera-lily-plateada/pulsera-lily-plateada-01.jpg",
+    "imagenes": [
+      "assets/productos/pulsera-lily-plateada/pulsera-lily-plateada-01.jpg",
+      "assets/productos/pulsera-lily-plateada/pulsera-lily-plateada-02.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "pulsera-avani",
+    "nombre": "Pulsera Avani",
+    "precio": "$12.000",
+    "descripcion": "Pulsera de acero blanco.",
+    "material": "Acero Blanco",
+    "categoria": "Pulseras",
+    "subcategoria": "Acero Blanco",
+    "imagenPrincipal": "assets/productos/pulsera-avani/pulsera-avani-01.jpg",
+    "imagenes": [
+      "assets/productos/pulsera-avani/pulsera-avani-01.jpg",
+      "assets/productos/pulsera-avani/pulsera-avani-02.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "pulsera-twist",
+    "nombre": "Pulsera Twist",
+    "precio": "$9.000",
+    "descripcion": "Pulsera de acero blanco.",
+    "material": "Acero Blanco",
+    "categoria": "Pulseras",
+    "subcategoria": "Acero Blanco",
+    "imagenPrincipal": "assets/productos/pulsera-twist/pulsera-twist-01.jpg",
+    "imagenes": [
+      "assets/productos/pulsera-twist/pulsera-twist-01.jpg",
+      "assets/productos/pulsera-twist/pulsera-twist-02.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "aros-cappe-plateados",
+    "nombre": "Aros Cappe Plateados",
+    "precio": "$12.000",
+    "descripcion": "Aros de acero blanco.",
+    "material": "Acero Blanco",
+    "categoria": "Aros",
+    "subcategoria": "Acero Blanco",
+    "imagenPrincipal": "assets/productos/aros-cappe-plateados/aros-cappe-plateados-01.jpg",
+    "imagenes": [
+      "assets/productos/aros-cappe-plateados/aros-cappe-plateados-01.jpg",
+      "assets/productos/aros-cappe-plateados/aros-cappe-plateados-02.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "cuff-rook",
+    "nombre": "Cuff Rook",
+    "precio": "$7.000",
+    "descripcion": "Aro a presión sin perforación, regulable (aro falso).",
+    "material": "Acero Blanco",
+    "categoria": "Aros",
+    "subcategoria": "Acero Blanco",
+    "imagenPrincipal": "assets/productos/cuff-rook/cuff-rook-01.jpg",
+    "imagenes": [
+      "assets/productos/cuff-rook/cuff-rook-01.jpg",
+      "assets/productos/cuff-rook/cuff-rook-02.jpg",
+      "assets/productos/cuff-rook/cuff-rook-03.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "cuff-viole",
+    "nombre": "Cuff Viole",
+    "precio": "$7.000",
+    "descripcion": "Aro a presión sin perforación, regulable (aro falso).",
+    "material": "Acero Blanco",
+    "categoria": "Aros",
+    "subcategoria": "Acero Blanco",
+    "imagenPrincipal": "assets/productos/cuff-viole/cuff-viole-01.jpg",
+    "imagenes": [
+      "assets/productos/cuff-viole/cuff-viole-01.jpg",
+      "assets/productos/cuff-viole/cuff-viole-02.jpg",
+      "assets/productos/cuff-viole/cuff-viole-03.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "cuff-spice",
+    "nombre": "Cuff Spice",
+    "precio": "$7.000",
+    "descripcion": "Aro a presión sin perforación (aro falso).",
+    "material": "Acero Quirúrgico",
+    "categoria": "Aros",
+    "subcategoria": "Acero Quirúrgico",
+    "imagenPrincipal": "assets/productos/cuff-spice/cuff-spice-01.jpg",
+    "imagenes": [
+      "assets/productos/cuff-spice/cuff-spice-01.jpg",
+      "assets/productos/cuff-spice/cuff-spice-02.jpg",
+      "assets/productos/cuff-spice/cuff-spice-03.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
     "slug": "aros-drop-dorados",
     "nombre": "Aros Drop Dorados",
     "precio": "$12.000",
