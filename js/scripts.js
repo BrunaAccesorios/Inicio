@@ -469,7 +469,7 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "aros-hexo",
   "pulsera-tina",
   "anillo-lali",
-  "anillo-glu",  "aros-italia",
+  "anillo-glu",
   "anillo-lavanda-plateado",
   "anillo-malena",
   "anillo-maison",
@@ -991,4 +991,6 @@ function setupCart() {
 }
 
 setupCart();
+
+
 
