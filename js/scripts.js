@@ -528,6 +528,50 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "corbatin-diana",
 ];
 
+function productUrlIncludesSlug(url, slug) {
+  return String(url || "").includes(`/productos/${slug}/`) || String(url || "").includes(`productos/${slug}/`);
+}
+
+function applyOutOfStockState() {
+  document.querySelectorAll(".bruna-product-grid .card").forEach((card) => {
+    const productLink = card.querySelector("a[href*='productos/']");
+    const productSlug = BRUNA_OUT_OF_STOCK_SLUGS.find((slug) => productUrlIncludesSlug(productLink?.getAttribute("href"), slug));
+
+    if (!productSlug) {
+      return;
+    }
+
+    if (!card.querySelector(".bruna-stock-badge")) {
+      const badge = document.createElement("span");
+      badge.className = "bruna-stock-badge";
+      badge.textContent = "Sin stock";
+      card.insertBefore(badge, card.firstElementChild);
+    }
+
+    card.querySelector(".bruna-add-to-cart")?.remove();
+  });
+
+  const currentOutOfStockSlug = BRUNA_OUT_OF_STOCK_SLUGS.find((slug) => productUrlIncludesSlug(window.location.pathname, slug));
+  const productInfo = document.querySelector(".bruna-product-info");
+
+  if (currentOutOfStockSlug && productInfo && !productInfo.querySelector(".bruna-whatsapp.is-disabled")) {
+    const badge = document.createElement("span");
+    badge.className = "bruna-whatsapp is-disabled";
+    badge.textContent = "Sin stock";
+    productInfo.append(badge);
+  }
+
+  document.querySelectorAll(".bruna-product-grid").forEach((grid) => {
+    Array.from(grid.querySelectorAll(":scope > .col"))
+      .sort((first, second) => {
+        const firstOutOfStock = first.querySelector(".bruna-stock-badge") ? 1 : 0;
+        const secondOutOfStock = second.querySelector(".bruna-stock-badge") ? 1 : 0;
+        return firstOutOfStock - secondOutOfStock;
+      })
+      .forEach((product) => grid.appendChild(product));
+  });
+}
+
 function formatARS(value) {
   return new Intl.NumberFormat("es-AR", {
     style: "currency",
@@ -990,6 +1034,7 @@ function setupCart() {
   });
 }
 
+applyOutOfStockState();
 setupCart();
 
 
