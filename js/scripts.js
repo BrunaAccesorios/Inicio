@@ -509,6 +509,23 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "anillo-hera",
   "anillo-agatha-dorado",
   "anillo-afrodita-dorado",
+  "aros-vivi",
+  "anillo-abrazo",
+  "aros-gina",
+  "aros-lucky",
+  "pulsera-chain",
+  "pulsera-chain-brillos",
+  "pulsera-diana",
+  "aros-blu",
+  "aros-ester",
+  "collar-kram-plateado",
+  "collar-kei",
+  "pulsera-espiga",
+  "aros-vil",
+  "argollitas-stella-chicas",
+  "pulsera-bimba",
+  "collar-willow",
+  "corbatin-diana",
 ];
 
 function formatARS(value) {
@@ -974,3 +991,4 @@ function setupCart() {
 }
 
 setupCart();
+
