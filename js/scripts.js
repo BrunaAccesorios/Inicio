@@ -527,6 +527,104 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "corbatin-diana",
 ];
 
+const BRUNA_NEW_PRODUCT_SLUGS = [
+  "anillo-aussy-dorado",
+  "anillo-aussy-plateado",
+  "anillo-bianca",
+  "anillo-biggy",
+  "anillo-bit",
+  "anillo-bullet",
+  "anillo-cally",
+  "anillo-campa",
+  "anillo-candy",
+  "anillo-chain",
+  "anillo-chanel",
+  "anillo-cinto",
+  "anillo-clari",
+  "anillo-clean",
+  "anillo-club",
+  "anillo-hojaldre",
+  "anillo-ines",
+  "anillo-isabel",
+  "anillo-jules-dorado",
+  "anillo-jules-plateado",
+  "anillo-kiara",
+  "anillo-kop",
+  "anillo-kuper",
+  "anillo-lulu",
+  "anillo-lupe",
+  "anillo-mary",
+  "anillo-oval",
+  "anillo-pilar",
+  "anillo-poppy",
+  "anillo-rabieta",
+  "anillo-rainy",
+  "anillo-raw",
+  "anillo-rita-dorado",
+  "anillo-rita-plateado",
+  "anillo-rolly",
+  "anillo-ruby",
+  "anillo-sara",
+  "anillo-slip",
+  "anillo-sol-radiante",
+  "anillo-sol-radiante-dorado",
+  "anillo-spike-dorado",
+  "anillo-spike-plateado",
+  "anillo-star",
+  "anillo-strike",
+  "anillo-stuart",
+  "anillo-sunny",
+  "anillo-sup",
+  "anillo-tina",
+  "anillo-tolo",
+  "anillo-val",
+  "anillo-vero-dorado",
+  "anillo-vero-plateado",
+  "anillo-wax",
+  "aros-bullet",
+  "aros-cappe-dorados",
+  "aros-cappe-plateados",
+  "aros-diamond-dorado",
+  "aros-diamond-plateados",
+  "aros-fini",
+  "aros-fiorella",
+  "aros-gala",
+  "aros-grecia",
+  "aros-guadalupe",
+  "aros-haus",
+  "aros-heart-plateados",
+  "aros-infit-dorados",
+  "aros-manhattan",
+  "aros-moon",
+  "aros-patria",
+  "aros-paula",
+  "aros-tri",
+  "aros-venecia",
+  "collar-cinque",
+  "collar-cruz",
+  "collar-helly-dorado",
+  "collar-helly-plateado",
+  "collar-hole",
+  "collar-lila",
+  "collar-mil",
+  "collar-nina",
+  "collar-tre",
+  "collar-tul",
+  "collar-xule",
+  "collar-zoe-dorado",
+  "collar-zoe-plateado",
+  "cuff-rook",
+  "cuff-spice",
+  "cuff-viole",
+  "pulsera-avani",
+  "pulsera-chain-blanca",
+  "pulsera-clean",
+  "pulsera-helly-dorada",
+  "pulsera-helly-plateada",
+  "pulsera-lily-plateada",
+  "pulsera-twist",
+];
+
 function productUrlIncludesSlug(url, slug) {
   return String(url || "").includes(`/productos/${slug}/`) || String(url || "").includes(`productos/${slug}/`);
 }
@@ -568,6 +666,23 @@ function applyOutOfStockState() {
         return firstOutOfStock - secondOutOfStock;
       })
       .forEach((product) => grid.appendChild(product));
+  });
+}
+
+function applyNewProductState() {
+  document.querySelectorAll(".bruna-product-grid .card").forEach((card) => {
+    const productLink = card.querySelector("a[href*='productos/']");
+    const isNewProduct = BRUNA_NEW_PRODUCT_SLUGS.some((slug) => productUrlIncludesSlug(productLink?.getAttribute("href"), slug));
+    const isOutOfStock = card.querySelector(".bruna-stock-badge");
+
+    if (!isNewProduct || isOutOfStock || card.querySelector(".bruna-new-badge")) {
+      return;
+    }
+
+    const badge = document.createElement("span");
+    badge.className = "bruna-new-badge";
+    badge.textContent = "Nuevo";
+    card.insertBefore(badge, card.firstElementChild);
   });
 }
 
@@ -1034,6 +1149,7 @@ function setupCart() {
 }
 
 applyOutOfStockState();
+applyNewProductState();
 setupCart();
 
 
