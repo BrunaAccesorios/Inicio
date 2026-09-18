@@ -234,9 +234,29 @@ function goToSearchPage(query) {
     return;
   }
 
-  const searchUrl = new URL("buscar/index.html", getSiteRootUrl());
+  const searchUrl = new URL("buscar/index.html", window.location.origin + "/");
   searchUrl.searchParams.set("q", cleanQuery);
-  window.location.href = searchUrl.href;
+  window.location.assign(searchUrl.href);
+}
+
+function setupProductSearch() {
+  if (!productSearch) {
+    return;
+  }
+
+  const submitProductSearch = () => {
+    goToSearchPage(productSearch.value || "");
+  };
+
+  productSearch.addEventListener("keydown", (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+      submitProductSearch();
+    }
+  });
+
+  productSearch.addEventListener("search", submitProductSearch);
+  headerSearch?.querySelector("span")?.addEventListener("click", submitProductSearch);
 }
 
 function saveCatalogReturnPoint() {
@@ -448,20 +468,6 @@ if (catalogProducts.length) {
     link.addEventListener("click", saveCatalogReturnPoint);
   });
 
-  const submitProductSearch = () => {
-    const query = productSearch.value.trim();
-    goToSearchPage(query);
-  };
-
-  productSearch.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      submitProductSearch();
-    }
-  });
-
-  headerSearch?.querySelector("span")?.addEventListener("click", submitProductSearch);
-
   if (isSearchPage) {
     productSearch?.addEventListener("input", () => {
       activeSearchTerm = productSearch.value.trim();
@@ -477,21 +483,9 @@ if (catalogProducts.length) {
     });
   }
 
-} else if (productSearch) {
-  const submitProductSearch = () => {
-    const query = productSearch.value.trim();
-    goToSearchPage(query);
-  };
-
-  productSearch.addEventListener("keydown", (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-      submitProductSearch();
-    }
-  });
-
-  headerSearch?.querySelector("span")?.addEventListener("click", submitProductSearch);
 }
+
+setupProductSearch();
 
 const catalogBackLink = document.querySelector(".bruna-back");
 
@@ -642,12 +636,16 @@ function applyOutOfStockState() {
   document.querySelectorAll(".bruna-product-grid .card").forEach((card) => {
     const productLink = card.querySelector("a[href*='productos/']");
     const productSlug = BRUNA_OUT_OF_STOCK_SLUGS.find((slug) => productUrlIncludesSlug(productLink?.getAttribute("href"), slug));
+    const existingBadge = card.querySelector(".bruna-stock-badge");
 
     if (!productSlug) {
       return;
     }
 
-    if (!card.querySelector(".bruna-stock-badge")) {
+    if (existingBadge) {
+      existingBadge.textContent = "Sin stock";
+      card.insertBefore(existingBadge, card.firstElementChild);
+    } else {
       const badge = document.createElement("span");
       badge.className = "bruna-stock-badge";
       badge.textContent = "Sin stock";
