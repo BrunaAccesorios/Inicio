@@ -193,14 +193,16 @@ function normalizeSearchText(value) {
 }
 
 function buildProductSearchText(product) {
+  const productLink = product.querySelector("a[href*='productos/']")?.getAttribute("href") || "";
   const rawText = [
     product.dataset.search || "",
     product.textContent,
-    product.querySelector("a")?.getAttribute("href") || "",
+    productLink || product.querySelector("a")?.getAttribute("href") || "",
     product.querySelector("img")?.getAttribute("src") || "",
   ].join(" ");
   const normalizedText = normalizeSearchText(rawText);
   const extraTerms = [];
+  const isOutOfStock = BRUNA_OUT_OF_STOCK_SLUGS.some((slug) => productUrlIncludesSlug(productLink, slug));
 
   if (/\b(aros?|argollitas?|cuff)\b/.test(normalizedText)) {
     extraTerms.push("aros");
@@ -243,6 +245,10 @@ function buildProductSearchText(product) {
 
   if (normalizedText.includes("cadena") || normalizedText.includes("chain")) {
     extraTerms.push("cadena");
+  }
+
+  if (isOutOfStock) {
+    extraTerms.push("sin stock", "sin-stock", "agotado", "agotada");
   }
 
   return `${normalizedText} ${extraTerms.join(" ")}`;
