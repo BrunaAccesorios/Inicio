@@ -569,6 +569,8 @@ const BRUNA_NEW_PRODUCT_SLUGS = [
   "anillo-ruby",
   "anillo-sara",
   "anillo-slip",
+  "anillo-sol-dorado",
+  "anillo-sol-plateado",
   "anillo-sol-radiante",
   "anillo-sol-radiante-dorado",
   "anillo-spike-dorado",
