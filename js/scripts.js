@@ -523,7 +523,6 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "pulsera-espiga",
   "aros-vil",
   "argollitas-stella-chicas",
-  "pulsera-bimba",
   "collar-willow",
   "corbatin-diana",
 ];
@@ -1036,6 +1035,7 @@ function setupCart() {
 
 applyOutOfStockState();
 setupCart();
+
 
 
 
