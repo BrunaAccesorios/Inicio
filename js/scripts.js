@@ -120,6 +120,10 @@ function normalizeCatalogCards() {
 normalizeCatalogCards();
 
 const BRUNA_OUT_OF_STOCK_SLUGS = [
+  "collar-cinque",
+  "collar-mil",
+  "anillo-sup",
+  "aros-star",
   "aros-spike",
   "collar-len-dorado",
   "pulsera-dora",
