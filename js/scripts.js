@@ -119,7 +119,12 @@ function normalizeCatalogCards() {
 
 normalizeCatalogCards();
 
+const BRUNA_HIDDEN_PRODUCT_SLUGS = [
+  "collar-dot",
+];
+
 const BRUNA_OUT_OF_STOCK_SLUGS = [
+  "collar-dot",
   "collar-cinque",
   "collar-mil",
   "anillo-sup",
@@ -221,6 +226,19 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "collar-willow",
   "corbatin-diana",
 ];
+
+function applyHiddenProductState() {
+  document.querySelectorAll(".bruna-product-grid > .col").forEach((product) => {
+    const productLink = product.querySelector("a[href*='productos/']")?.getAttribute("href") || "";
+    const isHiddenProduct = BRUNA_HIDDEN_PRODUCT_SLUGS.some((slug) => productUrlIncludesSlug(productLink, slug));
+
+    if (isHiddenProduct) {
+      product.remove();
+    }
+  });
+}
+
+applyHiddenProductState();
 
 const catalogProducts = Array.from(document.querySelectorAll(".bruna-product-grid > .col"));
 const loadMoreButton = document.querySelector(".bruna-load-more");
