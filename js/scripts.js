@@ -264,7 +264,7 @@ function goToSearchPage(query) {
     return;
   }
 
-  const searchUrl = new URL("buscar/index.html", window.location.origin + "/");
+  const searchUrl = new URL("buscar/index.html", getSiteRootUrl());
   searchUrl.searchParams.set("q", cleanQuery);
   window.location.assign(searchUrl.href);
 }
