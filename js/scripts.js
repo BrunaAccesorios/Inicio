@@ -137,6 +137,8 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "anillo-miel",
   "anillo-lennox-plateado",
   "cuff-vassety",
+  "anillo-lulu",
+  "aros-haus",
   "aros-spike",
   "collar-len-dorado",
   "pulsera-dora",
