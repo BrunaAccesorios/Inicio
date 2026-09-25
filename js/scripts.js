@@ -250,9 +250,12 @@ const filterLinks = document.querySelectorAll(".bruna-filter-link");
 const categoryLinks = document.querySelectorAll(".bruna-category-link");
 const pageCatalogFilter = document.body.dataset.catalogFilter?.trim() || "";
 const isSearchPage = document.body.dataset.searchPage === "true";
-const urlSearchTerm = new URLSearchParams(window.location.search).get("q")?.trim() || "";
-let activeCatalogSort = "featured";
-let activePriceFilter = 0;
+const urlParams = new URLSearchParams(window.location.search);
+const urlSearchTerm = urlParams.get("q")?.trim() || "";
+const urlSortTerm = urlParams.get("sort")?.trim() || "";
+const urlPriceTerm = urlParams.get("price")?.trim() || "";
+let activeCatalogSort = ["featured", "az", "za", "price-desc", "price-asc"].includes(urlSortTerm) ? urlSortTerm : "featured";
+let activePriceFilter = parsePriceSearch(urlPriceTerm);
 let visibleProductCount = pageCatalogFilter || isSearchPage ? Number.POSITIVE_INFINITY : 18;
 let activeSearchTerm = pageCatalogFilter;
 
@@ -263,13 +266,23 @@ function getSiteRootUrl() {
 
 function goToSearchPage(query) {
   const cleanQuery = query.trim();
+  const priceTerm = document.querySelector(".bruna-header-price-filter")?.value.trim() || "";
+  const selectedSort = document.querySelector(".bruna-header-sort")?.value || activeCatalogSort;
 
-  if (!cleanQuery) {
+  if (!cleanQuery && !priceTerm) {
     return;
   }
 
   const searchUrl = new URL("buscar/index.html", getSiteRootUrl());
-  searchUrl.searchParams.set("q", cleanQuery);
+  if (cleanQuery) {
+    searchUrl.searchParams.set("q", cleanQuery);
+  }
+  if (selectedSort && selectedSort !== "featured") {
+    searchUrl.searchParams.set("sort", selectedSort);
+  }
+  if (priceTerm) {
+    searchUrl.searchParams.set("price", priceTerm);
+  }
   window.location.assign(searchUrl.href);
 }
 
@@ -489,6 +502,121 @@ function sortCatalogProducts() {
   catalogProducts.forEach((product) => productGrid?.appendChild(product));
 }
 
+function syncCatalogControlValues() {
+  document.querySelectorAll(".bruna-catalog-sort, .bruna-header-sort").forEach((select) => {
+    select.value = activeCatalogSort;
+  });
+
+  const priceText = activePriceFilter ? activePriceFilter.toLocaleString("es-AR") : "";
+  document.querySelectorAll(".bruna-price-filter, .bruna-header-price-filter").forEach((input) => {
+    if (document.activeElement !== input) {
+      input.value = priceText;
+    }
+  });
+}
+
+function applyCatalogControls() {
+  if (catalogProducts.length) {
+    visibleProductCount = pageCatalogFilter || isSearchPage ? Number.POSITIVE_INFINITY : 18;
+    sortCatalogProducts();
+    updateCatalogVisibility();
+  }
+
+  syncCatalogControlValues();
+  updateSearchPageUrl();
+}
+
+function createSortControl(className, labelText) {
+  return `
+    <label>
+      <span>${labelText}</span>
+      <select class="${className}" aria-label="Ordenar productos">
+        <option value="featured">Destacados primero</option>
+        <option value="az">A-Z</option>
+        <option value="za">Z-A</option>
+        <option value="price-desc">Precio mayor a menor</option>
+        <option value="price-asc">Precio menor a mayor</option>
+      </select>
+    </label>
+  `;
+}
+
+function createPriceControl(className) {
+  return `
+    <label>
+      <span>Buscar por precio</span>
+      <input class="${className}" type="search" inputmode="numeric" placeholder="Ej: 10 mil" aria-label="Buscar por precio" autocomplete="off" />
+    </label>
+  `;
+}
+
+function setupCatalogControlEvents(container, sortClassName, priceClassName) {
+  const sortSelect = container.querySelector(`.${sortClassName}`);
+  const priceInput = container.querySelector(`.${priceClassName}`);
+
+  sortSelect?.addEventListener("change", () => {
+    activeCatalogSort = sortSelect.value;
+    applyCatalogControls();
+  });
+
+  priceInput?.addEventListener("input", () => {
+    activePriceFilter = parsePriceSearch(priceInput.value);
+    if (catalogProducts.length) {
+      updateCatalogVisibility();
+    }
+    syncCatalogControlValues();
+    updateSearchPageUrl();
+  });
+}
+
+function updateSearchPageUrl() {
+  if (!isSearchPage) {
+    return;
+  }
+
+  const nextUrl = new URL(window.location.href);
+  const searchTerm = productSearch?.value.trim() || activeSearchTerm;
+
+  if (searchTerm) {
+    nextUrl.searchParams.set("q", searchTerm);
+  } else {
+    nextUrl.searchParams.delete("q");
+  }
+
+  if (activeCatalogSort && activeCatalogSort !== "featured") {
+    nextUrl.searchParams.set("sort", activeCatalogSort);
+  } else {
+    nextUrl.searchParams.delete("sort");
+  }
+
+  if (activePriceFilter) {
+    nextUrl.searchParams.set("price", activePriceFilter.toLocaleString("es-AR"));
+  } else {
+    nextUrl.searchParams.delete("price");
+  }
+
+  window.history.replaceState({}, "", nextUrl);
+}
+
+function createHeaderSearchFilters() {
+  if (!headerSearch || headerSearch.querySelector(".bruna-header-filter-row")) {
+    return;
+  }
+
+  headerSearch.querySelector("div")?.classList.add("bruna-header-search-main");
+
+  const filterRow = document.createElement("div");
+  filterRow.className = "bruna-header-filter-row";
+  filterRow.innerHTML = `
+    ${createSortControl("bruna-header-sort", "Ordenar")}
+    ${createPriceControl("bruna-header-price-filter")}
+  `;
+
+  headerSearch.append(filterRow);
+  setupCatalogControlEvents(filterRow, "bruna-header-sort", "bruna-header-price-filter");
+  syncCatalogControlValues();
+}
+
 function createCatalogTools() {
   const productGrid = catalogProducts[0]?.parentElement;
 
@@ -503,38 +631,13 @@ function createCatalogTools() {
   const tools = document.createElement("div");
   tools.className = "bruna-catalog-tools";
   tools.innerHTML = `
-    <label>
-      <span>Ordenar</span>
-      <select class="bruna-catalog-sort" aria-label="Ordenar productos">
-        <option value="featured">Destacados primero</option>
-        <option value="az">A-Z</option>
-        <option value="za">Z-A</option>
-        <option value="price-desc">Precio mayor a menor</option>
-        <option value="price-asc">Precio menor a mayor</option>
-      </select>
-    </label>
-    <label>
-      <span>Buscar por precio</span>
-      <input class="bruna-price-filter" type="search" inputmode="numeric" placeholder="Ej: 10 mil" aria-label="Buscar por precio" autocomplete="off" />
-    </label>
+    ${createSortControl("bruna-catalog-sort", "Ordenar")}
+    ${createPriceControl("bruna-price-filter")}
   `;
 
   productGrid.before(tools);
-
-  const sortSelect = tools.querySelector(".bruna-catalog-sort");
-  const priceInput = tools.querySelector(".bruna-price-filter");
-
-  sortSelect?.addEventListener("change", () => {
-    activeCatalogSort = sortSelect.value;
-    visibleProductCount = pageCatalogFilter || isSearchPage ? Number.POSITIVE_INFINITY : 18;
-    sortCatalogProducts();
-    updateCatalogVisibility();
-  });
-
-  priceInput?.addEventListener("input", () => {
-    activePriceFilter = parsePriceSearch(priceInput.value);
-    updateCatalogVisibility();
-  });
+  setupCatalogControlEvents(tools, "bruna-catalog-sort", "bruna-price-filter");
+  syncCatalogControlValues();
 }
 
 function updateCatalogVisibility() {
@@ -647,19 +750,13 @@ if (catalogProducts.length) {
     productSearch?.addEventListener("input", () => {
       activeSearchTerm = productSearch.value.trim();
       updateCatalogVisibility();
-
-      const nextUrl = new URL(window.location.href);
-      if (activeSearchTerm) {
-        nextUrl.searchParams.set("q", activeSearchTerm);
-      } else {
-        nextUrl.searchParams.delete("q");
-      }
-      window.history.replaceState({}, "", nextUrl);
+      updateSearchPageUrl();
     });
   }
 
 }
 
+createHeaderSearchFilters();
 setupProductSearch();
 
 const catalogBackLink = document.querySelector(".bruna-back");

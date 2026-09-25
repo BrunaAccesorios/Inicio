@@ -299,7 +299,7 @@ body {
   font-size: 0.72rem;
 }
 
-.bruna-header-search div {
+.bruna-header-search-main {
   grid-column: 1 / -1;
   display: grid;
   grid-template-columns: 1fr auto;
@@ -321,6 +321,53 @@ body {
   color: var(--bruna-ink);
   font-size: 0.82rem;
   font-weight: 700;
+}
+
+.bruna-header-filter-row {
+  grid-column: 1 / -1;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  padding-top: 0.2rem;
+}
+
+.bruna-header-filter-row label {
+  display: grid;
+  gap: 0.28rem;
+  min-width: min(100%, 210px);
+  margin: 0;
+  color: rgba(25, 23, 22, 0.56);
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.bruna-header-filter-row select,
+.bruna-header-filter-row input {
+  min-height: 36px;
+  border: 1px solid rgba(16, 44, 99, 0.15);
+  border-radius: 999px;
+  background: rgba(255, 250, 246, 0.84);
+  color: var(--bruna-ink);
+  font: 700 0.86rem/1 system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  letter-spacing: 0;
+  text-transform: none;
+  outline: none;
+}
+
+.bruna-header-filter-row select {
+  padding: 0 2.2rem 0 0.9rem;
+}
+
+.bruna-header-filter-row input {
+  padding: 0 0.9rem;
+}
+
+.bruna-header-filter-row select:focus,
+.bruna-header-filter-row input:focus {
+  border-color: var(--bruna-navy);
+  box-shadow: 0 0 0 3px rgba(16, 44, 99, 0.1);
 }
 
 .bruna-home-hero {
@@ -1762,6 +1809,15 @@ body {
 
   .bruna-header-search span {
     font-size: 0.78rem;
+  }
+
+  .bruna-header-filter-row {
+    gap: 0.55rem;
+  }
+
+  .bruna-header-filter-row label {
+    min-width: min(100%, 160px);
+    flex: 1 1 160px;
   }
 
   .bruna-home-hero {
