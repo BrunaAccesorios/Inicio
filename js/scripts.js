@@ -266,7 +266,7 @@ function goToSearchPage(query) {
   const cleanQuery = query.trim();
   const selectedSort = document.querySelector(".bruna-header-sort")?.value || activeCatalogSort;
 
-  if (!cleanQuery) {
+  if (!cleanQuery && selectedSort === "featured") {
     return;
   }
 
@@ -507,6 +507,10 @@ function setupCatalogControlEvents(container, sortClassName) {
 
   sortSelect?.addEventListener("change", () => {
     activeCatalogSort = sortSelect.value;
+    if (!catalogProducts.length && sortSelect.classList.contains("bruna-header-sort")) {
+      goToSearchPage(productSearch?.value || "");
+      return;
+    }
     applyCatalogControls();
   });
 }
