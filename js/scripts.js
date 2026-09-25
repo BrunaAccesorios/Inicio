@@ -242,7 +242,7 @@ function applyHiddenProductState() {
 
 applyHiddenProductState();
 
-const catalogProducts = Array.from(document.querySelectorAll(".bruna-product-grid > .col"));
+let catalogProducts = Array.from(document.querySelectorAll(".bruna-product-grid > .col"));
 const loadMoreButton = document.querySelector(".bruna-load-more");
 const productSearch = document.querySelector("#product-search");
 const searchEmptyMessage = document.querySelector(".bruna-search-empty");
@@ -251,6 +251,8 @@ const categoryLinks = document.querySelectorAll(".bruna-category-link");
 const pageCatalogFilter = document.body.dataset.catalogFilter?.trim() || "";
 const isSearchPage = document.body.dataset.searchPage === "true";
 const urlSearchTerm = new URLSearchParams(window.location.search).get("q")?.trim() || "";
+let activeCatalogSort = "featured";
+let activePriceFilter = 0;
 let visibleProductCount = pageCatalogFilter || isSearchPage ? Number.POSITIVE_INFINITY : 18;
 let activeSearchTerm = pageCatalogFilter;
 
@@ -394,7 +396,145 @@ function buildProductSearchText(product) {
     extraTerms.push("sin stock", "sin-stock", "agotado", "agotada");
   }
 
+  const productPrice = getProductPrice(product);
+
+  if (productPrice) {
+    const priceInThousands = productPrice / 1000;
+    extraTerms.push(
+      String(productPrice),
+      productPrice.toLocaleString("es-AR"),
+      `${priceInThousands} mil`,
+      `${priceInThousands}mil`
+    );
+  }
+
   return `${normalizedText} ${extraTerms.join(" ")}`;
+}
+
+function getProductLink(product) {
+  return product.querySelector("a[href*='productos/']")?.getAttribute("href") || "";
+}
+
+function getProductName(product) {
+  return product.querySelector(".fw-bolder")?.textContent.trim() || product.dataset.search?.trim() || "";
+}
+
+function getProductPrice(product) {
+  const priceElement = product.querySelector(".bruna-card-price");
+  return Number(priceElement?.dataset.originalPrice) || parseARS(priceElement?.textContent || "");
+}
+
+function isProductOutOfStock(product) {
+  const productLink = getProductLink(product);
+  return BRUNA_OUT_OF_STOCK_SLUGS.some((slug) => productUrlIncludesSlug(productLink, slug));
+}
+
+function parsePriceSearch(value) {
+  const normalizedValue = normalizeSearchText(value).trim();
+
+  if (!normalizedValue) {
+    return 0;
+  }
+
+  const numberMatch = normalizedValue.match(/\d+(?:[.,]\d+)?/);
+
+  if (!numberMatch) {
+    return 0;
+  }
+
+  const rawNumber = Number(numberMatch[0].replace(",", "."));
+
+  if (!Number.isFinite(rawNumber) || rawNumber <= 0) {
+    return 0;
+  }
+
+  if (normalizedValue.includes("mil") || rawNumber < 1000) {
+    return Math.round(rawNumber * 1000);
+  }
+
+  return parseARS(numberMatch[0]);
+}
+
+function sortCatalogProducts() {
+  const collator = new Intl.Collator("es", { sensitivity: "base", numeric: true });
+  const sortedProducts = [...catalogProducts].sort((first, second) => {
+    const firstOutOfStock = isProductOutOfStock(first) ? 1 : 0;
+    const secondOutOfStock = isProductOutOfStock(second) ? 1 : 0;
+
+    if (firstOutOfStock !== secondOutOfStock) {
+      return firstOutOfStock - secondOutOfStock;
+    }
+
+    if (activeCatalogSort === "az") {
+      return collator.compare(getProductName(first), getProductName(second));
+    }
+
+    if (activeCatalogSort === "za") {
+      return collator.compare(getProductName(second), getProductName(first));
+    }
+
+    if (activeCatalogSort === "price-desc") {
+      return getProductPrice(second) - getProductPrice(first);
+    }
+
+    if (activeCatalogSort === "price-asc") {
+      return getProductPrice(first) - getProductPrice(second);
+    }
+
+    return Number(first.dataset.originalIndex) - Number(second.dataset.originalIndex);
+  });
+
+  catalogProducts = sortedProducts;
+  const productGrid = catalogProducts[0]?.parentElement;
+  catalogProducts.forEach((product) => productGrid?.appendChild(product));
+}
+
+function createCatalogTools() {
+  const productGrid = catalogProducts[0]?.parentElement;
+
+  if (!productGrid || document.querySelector(".bruna-catalog-tools")) {
+    return;
+  }
+
+  catalogProducts.forEach((product, index) => {
+    product.dataset.originalIndex = String(index);
+  });
+
+  const tools = document.createElement("div");
+  tools.className = "bruna-catalog-tools";
+  tools.innerHTML = `
+    <label>
+      <span>Ordenar</span>
+      <select class="bruna-catalog-sort" aria-label="Ordenar productos">
+        <option value="featured">Destacados primero</option>
+        <option value="az">A-Z</option>
+        <option value="za">Z-A</option>
+        <option value="price-desc">Precio mayor a menor</option>
+        <option value="price-asc">Precio menor a mayor</option>
+      </select>
+    </label>
+    <label>
+      <span>Buscar por precio</span>
+      <input class="bruna-price-filter" type="search" inputmode="numeric" placeholder="Ej: 10 mil" aria-label="Buscar por precio" autocomplete="off" />
+    </label>
+  `;
+
+  productGrid.before(tools);
+
+  const sortSelect = tools.querySelector(".bruna-catalog-sort");
+  const priceInput = tools.querySelector(".bruna-price-filter");
+
+  sortSelect?.addEventListener("change", () => {
+    activeCatalogSort = sortSelect.value;
+    visibleProductCount = pageCatalogFilter || isSearchPage ? Number.POSITIVE_INFINITY : 18;
+    sortCatalogProducts();
+    updateCatalogVisibility();
+  });
+
+  priceInput?.addEventListener("input", () => {
+    activePriceFilter = parsePriceSearch(priceInput.value);
+    updateCatalogVisibility();
+  });
 }
 
 function updateCatalogVisibility() {
@@ -404,8 +544,9 @@ function updateCatalogVisibility() {
     const productText = buildProductSearchText(product);
     const searchWords = normalizeSearchText(activeSearchTerm).split(/\s+/).filter(Boolean);
     const matchesSearch = pageCatalogFilter || !searchWords.length || searchWords.every((word) => productText.includes(word));
-    const isWithinVisibleCount = activeSearchTerm || index < visibleProductCount;
-    const shouldHide = !matchesSearch || !isWithinVisibleCount;
+    const matchesPrice = !activePriceFilter || getProductPrice(product) === activePriceFilter;
+    const isWithinVisibleCount = activeSearchTerm || activePriceFilter || index < visibleProductCount;
+    const shouldHide = !matchesSearch || !matchesPrice || !isWithinVisibleCount;
 
     product.classList.toggle("bruna-product-hidden", shouldHide);
 
@@ -415,12 +556,12 @@ function updateCatalogVisibility() {
   });
 
   if (loadMoreButton) {
-    const shouldShowLoadMore = !activeSearchTerm && visibleProductCount < catalogProducts.length;
+    const shouldShowLoadMore = !activeSearchTerm && !activePriceFilter && visibleProductCount < catalogProducts.length;
     loadMoreButton.style.display = shouldShowLoadMore ? "" : "none";
   }
 
   if (searchEmptyMessage) {
-    searchEmptyMessage.hidden = !activeSearchTerm || visibleMatches > 0;
+    searchEmptyMessage.hidden = (!activeSearchTerm && !activePriceFilter) || visibleMatches > 0;
   }
 }
 
@@ -474,6 +615,8 @@ if (catalogProducts.length) {
     visibleProductCount = savedVisibleCount;
   }
 
+  createCatalogTools();
+  sortCatalogProducts();
   updateCatalogVisibility();
 
   if (!pageCatalogFilter && savedScrollY > 0) {
