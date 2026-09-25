@@ -253,9 +253,7 @@ const isSearchPage = document.body.dataset.searchPage === "true";
 const urlParams = new URLSearchParams(window.location.search);
 const urlSearchTerm = urlParams.get("q")?.trim() || "";
 const urlSortTerm = urlParams.get("sort")?.trim() || "";
-const urlPriceTerm = urlParams.get("price")?.trim() || "";
 let activeCatalogSort = ["featured", "az", "za", "price-desc", "price-asc"].includes(urlSortTerm) ? urlSortTerm : "featured";
-let activePriceFilter = parsePriceSearch(urlPriceTerm);
 let visibleProductCount = pageCatalogFilter || isSearchPage ? Number.POSITIVE_INFINITY : 18;
 let activeSearchTerm = pageCatalogFilter;
 
@@ -266,10 +264,9 @@ function getSiteRootUrl() {
 
 function goToSearchPage(query) {
   const cleanQuery = query.trim();
-  const priceTerm = document.querySelector(".bruna-header-price-filter")?.value.trim() || "";
   const selectedSort = document.querySelector(".bruna-header-sort")?.value || activeCatalogSort;
 
-  if (!cleanQuery && !priceTerm) {
+  if (!cleanQuery) {
     return;
   }
 
@@ -279,9 +276,6 @@ function goToSearchPage(query) {
   }
   if (selectedSort && selectedSort !== "featured") {
     searchUrl.searchParams.set("sort", selectedSort);
-  }
-  if (priceTerm) {
-    searchUrl.searchParams.set("price", priceTerm);
   }
   window.location.assign(searchUrl.href);
 }
@@ -442,32 +436,6 @@ function isProductOutOfStock(product) {
   return BRUNA_OUT_OF_STOCK_SLUGS.some((slug) => productUrlIncludesSlug(productLink, slug));
 }
 
-function parsePriceSearch(value) {
-  const normalizedValue = normalizeSearchText(value).trim();
-
-  if (!normalizedValue) {
-    return 0;
-  }
-
-  const numberMatch = normalizedValue.match(/\d+(?:[.,]\d+)?/);
-
-  if (!numberMatch) {
-    return 0;
-  }
-
-  const rawNumber = Number(numberMatch[0].replace(",", "."));
-
-  if (!Number.isFinite(rawNumber) || rawNumber <= 0) {
-    return 0;
-  }
-
-  if (normalizedValue.includes("mil") || rawNumber < 1000) {
-    return Math.round(rawNumber * 1000);
-  }
-
-  return parseARS(numberMatch[0]);
-}
-
 function sortCatalogProducts() {
   const collator = new Intl.Collator("es", { sensitivity: "base", numeric: true });
   const sortedProducts = [...catalogProducts].sort((first, second) => {
@@ -506,13 +474,6 @@ function syncCatalogControlValues() {
   document.querySelectorAll(".bruna-catalog-sort, .bruna-header-sort").forEach((select) => {
     select.value = activeCatalogSort;
   });
-
-  const priceText = activePriceFilter ? activePriceFilter.toLocaleString("es-AR") : "";
-  document.querySelectorAll(".bruna-price-filter, .bruna-header-price-filter").forEach((input) => {
-    if (document.activeElement !== input) {
-      input.value = priceText;
-    }
-  });
 }
 
 function applyCatalogControls() {
@@ -541,31 +502,12 @@ function createSortControl(className, labelText) {
   `;
 }
 
-function createPriceControl(className) {
-  return `
-    <label>
-      <span>Buscar por precio</span>
-      <input class="${className}" type="search" inputmode="numeric" placeholder="Ej: 10 mil" aria-label="Buscar por precio" autocomplete="off" />
-    </label>
-  `;
-}
-
-function setupCatalogControlEvents(container, sortClassName, priceClassName) {
+function setupCatalogControlEvents(container, sortClassName) {
   const sortSelect = container.querySelector(`.${sortClassName}`);
-  const priceInput = container.querySelector(`.${priceClassName}`);
 
   sortSelect?.addEventListener("change", () => {
     activeCatalogSort = sortSelect.value;
     applyCatalogControls();
-  });
-
-  priceInput?.addEventListener("input", () => {
-    activePriceFilter = parsePriceSearch(priceInput.value);
-    if (catalogProducts.length) {
-      updateCatalogVisibility();
-    }
-    syncCatalogControlValues();
-    updateSearchPageUrl();
   });
 }
 
@@ -589,11 +531,7 @@ function updateSearchPageUrl() {
     nextUrl.searchParams.delete("sort");
   }
 
-  if (activePriceFilter) {
-    nextUrl.searchParams.set("price", activePriceFilter.toLocaleString("es-AR"));
-  } else {
-    nextUrl.searchParams.delete("price");
-  }
+  nextUrl.searchParams.delete("price");
 
   window.history.replaceState({}, "", nextUrl);
 }
@@ -609,11 +547,10 @@ function createHeaderSearchFilters() {
   filterRow.className = "bruna-header-filter-row";
   filterRow.innerHTML = `
     ${createSortControl("bruna-header-sort", "Ordenar")}
-    ${createPriceControl("bruna-header-price-filter")}
   `;
 
   headerSearch.append(filterRow);
-  setupCatalogControlEvents(filterRow, "bruna-header-sort", "bruna-header-price-filter");
+  setupCatalogControlEvents(filterRow, "bruna-header-sort");
   syncCatalogControlValues();
 }
 
@@ -632,11 +569,10 @@ function createCatalogTools() {
   tools.className = "bruna-catalog-tools";
   tools.innerHTML = `
     ${createSortControl("bruna-catalog-sort", "Ordenar")}
-    ${createPriceControl("bruna-price-filter")}
   `;
 
   productGrid.before(tools);
-  setupCatalogControlEvents(tools, "bruna-catalog-sort", "bruna-price-filter");
+  setupCatalogControlEvents(tools, "bruna-catalog-sort");
   syncCatalogControlValues();
 }
 
@@ -647,9 +583,8 @@ function updateCatalogVisibility() {
     const productText = buildProductSearchText(product);
     const searchWords = normalizeSearchText(activeSearchTerm).split(/\s+/).filter(Boolean);
     const matchesSearch = pageCatalogFilter || !searchWords.length || searchWords.every((word) => productText.includes(word));
-    const matchesPrice = !activePriceFilter || getProductPrice(product) === activePriceFilter;
-    const isWithinVisibleCount = activeSearchTerm || activePriceFilter || index < visibleProductCount;
-    const shouldHide = !matchesSearch || !matchesPrice || !isWithinVisibleCount;
+    const isWithinVisibleCount = activeSearchTerm || index < visibleProductCount;
+    const shouldHide = !matchesSearch || !isWithinVisibleCount;
 
     product.classList.toggle("bruna-product-hidden", shouldHide);
 
@@ -659,12 +594,12 @@ function updateCatalogVisibility() {
   });
 
   if (loadMoreButton) {
-    const shouldShowLoadMore = !activeSearchTerm && !activePriceFilter && visibleProductCount < catalogProducts.length;
+    const shouldShowLoadMore = !activeSearchTerm && visibleProductCount < catalogProducts.length;
     loadMoreButton.style.display = shouldShowLoadMore ? "" : "none";
   }
 
   if (searchEmptyMessage) {
-    searchEmptyMessage.hidden = (!activeSearchTerm && !activePriceFilter) || visibleMatches > 0;
+    searchEmptyMessage.hidden = !activeSearchTerm || visibleMatches > 0;
   }
 }
 
