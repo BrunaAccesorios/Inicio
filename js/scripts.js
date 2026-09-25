@@ -1333,6 +1333,10 @@ function setupCart() {
 }
 
 applyOutOfStockState();
+if (catalogProducts.length) {
+  sortCatalogProducts();
+  updateCatalogVisibility();
+}
 applyNewProductState();
 setupCart();
 
