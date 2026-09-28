@@ -134,6 +134,8 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "anillo-giulia",
   "anillo-jasmine",
   "collar-anto-blanco",
+  "collar-aruba-marron",
+  "collar-aruba-rojo",
   "collar-dot",
   "collar-cinque",
   "collar-mil",
@@ -235,7 +237,6 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "pulsera-espiga",
   "aros-vil",
   "argollitas-stella-chicas",
-  "collar-willow",
   "corbatin-diana",
 ];
 
