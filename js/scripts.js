@@ -120,10 +120,20 @@ function normalizeCatalogCards() {
 normalizeCatalogCards();
 
 const BRUNA_HIDDEN_PRODUCT_SLUGS = [
+  "anillo-jasmine",
   "collar-dot",
 ];
 
 const BRUNA_OUT_OF_STOCK_SLUGS = [
+  "cuff-viole",
+  "cuff-floppy-plateado",
+  "anillo-lupe",
+  "anillo-bit",
+  "anillo-oval",
+  "anillo-elisa",
+  "anillo-giulia",
+  "anillo-jasmine",
+  "collar-anto-blanco",
   "collar-dot",
   "collar-cinque",
   "collar-mil",
