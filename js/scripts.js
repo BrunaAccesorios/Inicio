@@ -832,6 +832,8 @@ const BRUNA_NEW_PRODUCT_SLUGS = [
   "aros-moon",
   "aros-patria",
   "aros-paula",
+  "set-x3-amalfi",
+  "aros-tiff-plateados",
   "aros-tri",
   "aros-venecia",
   "collar-cinque",
