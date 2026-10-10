@@ -760,6 +760,17 @@ const BRUNA_DISCOUNT_CODE = "CUMPLEBRUNA";
 const BRUNA_DISCOUNT_ENABLED = false;
 
 const BRUNA_NEW_PRODUCT_SLUGS = [
+  "pulsera-chain-dorada",
+  "esclava-tiff-dorada",
+  "esclava-tiff-plateada",
+  "corbatin-mimi",
+  "collar-bullet",
+  "collar-amorfa",
+  "collar-telly",
+  "collar-cristal",
+  "collar-runa",
+  "anillo-jacky",
+  "anillo-abrazo-dorado",
   "anillo-aussy-dorado",
   "anillo-aussy-plateado",
   "anillo-bianca",
