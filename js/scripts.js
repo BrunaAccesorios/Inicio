@@ -851,6 +851,8 @@ const BRUNA_NEW_PRODUCT_SLUGS = [
   "collar-hole",
   "choker-cruz",
   "choker-estrella",
+  "cuff-spiral",
+  "cuff-star",
   "collar-way",
   "collar-strain",
   "collar-pili",
