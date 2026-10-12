@@ -755,9 +755,9 @@ if (carouselPrev && carouselNext) {
 const CART_STORAGE_KEY = "brunaCart";
 const CART_COUPON_STORAGE_KEY = "brunaCartCoupon";
 const BRUNA_WHATSAPP_NUMBER = "5491164282208";
-const BRUNA_DISCOUNT_PERCENT = 20;
-const BRUNA_DISCOUNT_CODE = "CUMPLEBRUNA";
-const BRUNA_DISCOUNT_ENABLED = false;
+const BRUNA_DISCOUNT_PERCENT = 15;
+const BRUNA_DISCOUNT_CODE = "MAMA15";
+const BRUNA_DISCOUNT_ENABLED = true;
 
 const BRUNA_NEW_PRODUCT_SLUGS = [
   "pulsera-chain-dorada",
