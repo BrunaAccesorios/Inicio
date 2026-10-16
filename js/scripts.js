@@ -125,7 +125,19 @@ const BRUNA_HIDDEN_PRODUCT_SLUGS = [
 ];
 
 const BRUNA_OUT_OF_STOCK_SLUGS = [
-  "cuff-viole",
+  "esclava-ser",
+  "choker-estrella",
+  "set-x3-amalfi",
+  "aros-manhattan",
+  "aros-diamond-dorado",
+  "anillo-tolo",
+  "pulsera-anita",
+  "anillo-ivory",
+  "collar-winx",
+  "aros-lisa-dorados",
+  "collar-kram-dorado",
+  "collar-kali",
+  "collar-lock",
   "cuff-floppy-plateado",
   "anillo-lupe",
   "anillo-bit",
@@ -146,7 +158,6 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "anillo-ines",
   "anillo-simone",
   "anillo-sunny",
-  "anillo-sol-plateado",
   "anillo-vienna-plateado",
   "anillo-juana",
   "anillo-miel",
@@ -237,11 +248,9 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "aros-ester",
   "collar-kram-plateado",
   "collar-kei",
-  "aros-vil",
   "argollitas-stella-chicas",
   "corbatin-diana",
   "aros-paula",
-  "aros-jules",
   "anillo-kop",
   "collar-xule",
   "argollitas-stella-grandes",
@@ -757,7 +766,7 @@ const CART_COUPON_STORAGE_KEY = "brunaCartCoupon";
 const BRUNA_WHATSAPP_NUMBER = "5491164282208";
 const BRUNA_DISCOUNT_PERCENT = 15;
 const BRUNA_DISCOUNT_CODE = "MAMA15";
-const BRUNA_DISCOUNT_ENABLED = true;
+const BRUNA_DISCOUNT_ENABLED = false;
 
 const BRUNA_NEW_PRODUCT_SLUGS = [
   "pulsera-chain-dorada",
