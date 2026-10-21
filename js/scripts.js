@@ -120,11 +120,30 @@ function normalizeCatalogCards() {
 normalizeCatalogCards();
 
 const BRUNA_HIDDEN_PRODUCT_SLUGS = [
+  "pulsera-paris-plateada",
+  "pulsera-paris-blanca",
+  "pulsera-fuego",
+  "pulsera-aqua",
   "anillo-jasmine",
   "collar-dot",
 ];
 
 const BRUNA_OUT_OF_STOCK_SLUGS = [
+  "esclava-tiff-dorada",
+  "aros-anto-plateados",
+  "collar-fela",
+  "pulsera-avani",
+  "aros-venecia",
+  "aros-diamond-plateados",
+  "anillo-sol-dorado",
+  "anillo-aussy-plateado",
+  "aros-trip-dorados",
+  "aros-julia",
+  "collar-kala",
+  "pulsera-paris-plateada",
+  "pulsera-paris-blanca",
+  "pulsera-fuego",
+  "pulsera-aqua",
   "esclava-ser",
   "choker-estrella",
   "set-x3-amalfi",
