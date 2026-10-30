@@ -1015,6 +1015,9 @@ function saveCouponApplied(isApplied) {
   }
 }
 
+const CART_PRICE_REVISION = "2026-10-30";
+const CART_PRICE_UPDATES = { 10000: 12000, 15000: 16500, 6000: 8000, 8000: 10000, 17000: 20000, 20000: 21500, 22000: 23500, 12000: 14500 };
+
 function loadCart() {
   try {
     const savedCart = JSON.parse(localStorage.getItem(CART_STORAGE_KEY) || "[]");
@@ -1026,9 +1029,13 @@ function loadCart() {
       const itemId = String(item.id || "");
       return !BRUNA_OUT_OF_STOCK_SLUGS.some((slug) => itemId.includes(`/productos/${slug}/`));
     }).map((item) => {
-      const originalPrice = Number(item.originalPrice) || Number(item.price) || 0;
+      const savedPrice = Number(item.originalPrice) || Number(item.price) || 0;
+      const originalPrice = item.priceRevision === CART_PRICE_REVISION
+        ? savedPrice
+        : CART_PRICE_UPDATES[savedPrice] || savedPrice;
       return {
         ...item,
+        priceRevision: CART_PRICE_REVISION,
         originalPrice,
         price: originalPrice,
       };
@@ -1039,7 +1046,7 @@ function loadCart() {
 }
 
 function saveCart(cart) {
-  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart));
+  localStorage.setItem(CART_STORAGE_KEY, JSON.stringify(cart.map((item) => ({ ...item, priceRevision: CART_PRICE_REVISION }))));
 }
 
 function normalizeCartUrl(url) {

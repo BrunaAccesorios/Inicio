@@ -2,7 +2,7 @@
   {
     "slug": "pulsera-helly-dorada",
     "nombre": "Pulsera Helly Dorada",
-    "precio": "$15.000",
+    "precio": "$16.500",
     "descripcion": "Pulsera de acero dorado.",
     "material": "Acero Dorado",
     "categoria": "Pulseras",
@@ -16,7 +16,7 @@
   {
     "slug": "pulsera-lily-plateada",
     "nombre": "Pulsera Lily Plateada",
-    "precio": "$8.000",
+    "precio": "$10.000",
     "descripcion": "Pulsera de acero quirúrgico.",
     "material": "Acero Quirúrgico",
     "categoria": "Pulseras",
@@ -31,7 +31,7 @@
   {
     "slug": "pulsera-avani",
     "nombre": "Pulsera Avani",
-    "precio": "$12.000",
+    "precio": "$14.500",
     "descripcion": "Pulsera de acero blanco.",
     "material": "Acero Blanco",
     "categoria": "Pulseras",
@@ -61,7 +61,7 @@
   {
     "slug": "aros-cappe-plateados",
     "nombre": "Aros Cappe Plateados",
-    "precio": "$12.000",
+    "precio": "$14.500",
     "descripcion": "Aros de acero blanco.",
     "material": "Acero Blanco",
     "categoria": "Aros",
@@ -124,7 +124,7 @@
   {
     "slug": "aros-drop-dorados",
     "nombre": "Aros Drop Dorados",
-    "precio": "$12.000",
+    "precio": "$14.500",
     "descripcion": "Aros con función clic, cómodos para usar todo el día: no molestan ni lastiman.",
     "material": "Acero Dorado",
     "categoria": "Aros",
