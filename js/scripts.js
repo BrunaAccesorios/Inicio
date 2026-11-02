@@ -129,6 +129,13 @@ const BRUNA_HIDDEN_PRODUCT_SLUGS = [
 ];
 
 const BRUNA_OUT_OF_STOCK_SLUGS = [
+  "collar-met",
+  "collar-cora",
+  "esclava-loop",
+  "collar-zoe-dorado",
+  "collar-helly-plateado",
+  "aros-fiorella",
+  "aros-italia",
   "esclava-tiff-dorada",
   "aros-anto-plateados",
   "collar-fela",
