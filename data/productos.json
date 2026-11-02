@@ -1,5 +1,204 @@
 [
   {
+    "slug": "choker-ballo",
+    "nombre": "Choker Ballo",
+    "precio": "$15.000",
+    "descripcion": "Gargantilla estilo boho regulable.",
+    "categoria": "Collares",
+    "subcategoria": "",
+    "imagenPrincipal": "assets/productos/choker-ballo/choker-ballo-01.jpg",
+    "imagenes": [
+      "assets/productos/choker-ballo/choker-ballo-01.jpg",
+      "assets/productos/choker-ballo/choker-ballo-02.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "choker-billy",
+    "nombre": "Choker Billy",
+    "precio": "$15.000",
+    "descripcion": "Gargantilla estilo boho regulable.",
+    "categoria": "Collares",
+    "subcategoria": "",
+    "imagenPrincipal": "assets/productos/choker-billy/choker-billy-01.jpg",
+    "imagenes": [
+      "assets/productos/choker-billy/choker-billy-01.jpg",
+      "assets/productos/choker-billy/choker-billy-02.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "choker-blew",
+    "nombre": "Choker Blew",
+    "precio": "$15.000",
+    "descripcion": "Gargantilla estilo boho regulable.",
+    "categoria": "Collares",
+    "subcategoria": "",
+    "imagenPrincipal": "assets/productos/choker-blew/choker-blew-01.jpg",
+    "imagenes": [
+      "assets/productos/choker-blew/choker-blew-01.jpg",
+      "assets/productos/choker-blew/choker-blew-02.jpg",
+      "assets/productos/choker-blew/choker-blew-03.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "choker-brish",
+    "nombre": "Choker Brish",
+    "precio": "$15.000",
+    "descripcion": "Gargantilla estilo boho regulable.",
+    "categoria": "Collares",
+    "subcategoria": "",
+    "imagenPrincipal": "assets/productos/choker-brish/choker-brish-01.jpg",
+    "imagenes": [
+      "assets/productos/choker-brish/choker-brish-01.jpg",
+      "assets/productos/choker-brish/choker-brish-02.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "choker-cub",
+    "nombre": "Choker Cub",
+    "precio": "$15.000",
+    "descripcion": "Gargantilla estilo boho regulable.",
+    "categoria": "Collares",
+    "subcategoria": "",
+    "imagenPrincipal": "assets/productos/choker-cub/choker-cub-01.jpg",
+    "imagenes": [
+      "assets/productos/choker-cub/choker-cub-01.jpg",
+      "assets/productos/choker-cub/choker-cub-02.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "choker-grip",
+    "nombre": "Choker Grip",
+    "precio": "$15.000",
+    "descripcion": "Gargantilla estilo boho regulable.",
+    "categoria": "Collares",
+    "subcategoria": "",
+    "imagenPrincipal": "assets/productos/choker-grip/choker-grip-01.jpg",
+    "imagenes": [
+      "assets/productos/choker-grip/choker-grip-01.jpg",
+      "assets/productos/choker-grip/choker-grip-02.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "choker-hally",
+    "nombre": "Choker Hally",
+    "precio": "$15.000",
+    "descripcion": "Gargantilla estilo boho regulable.",
+    "categoria": "Collares",
+    "subcategoria": "",
+    "imagenPrincipal": "assets/productos/choker-hally/choker-hally-01.jpg",
+    "imagenes": [
+      "assets/productos/choker-hally/choker-hally-01.jpg",
+      "assets/productos/choker-hally/choker-hally-02.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "choker-kila",
+    "nombre": "Choker Kila",
+    "precio": "$15.000",
+    "descripcion": "Gargantilla estilo boho regulable.",
+    "categoria": "Collares",
+    "subcategoria": "",
+    "imagenPrincipal": "assets/productos/choker-kila/choker-kila-01.jpg",
+    "imagenes": [
+      "assets/productos/choker-kila/choker-kila-01.jpg",
+      "assets/productos/choker-kila/choker-kila-02.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "choker-loop",
+    "nombre": "Choker Loop",
+    "precio": "$15.000",
+    "descripcion": "Gargantilla estilo boho regulable.",
+    "categoria": "Collares",
+    "subcategoria": "",
+    "imagenPrincipal": "assets/productos/choker-loop/choker-loop-01.jpg",
+    "imagenes": [
+      "assets/productos/choker-loop/choker-loop-01.jpg",
+      "assets/productos/choker-loop/choker-loop-02.jpg",
+      "assets/productos/choker-loop/choker-loop-03.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "choker-mia",
+    "nombre": "Choker Mia",
+    "precio": "$15.000",
+    "descripcion": "Gargantilla estilo boho regulable.",
+    "categoria": "Collares",
+    "subcategoria": "",
+    "imagenPrincipal": "assets/productos/choker-mia/choker-mia-01.jpg",
+    "imagenes": [
+      "assets/productos/choker-mia/choker-mia-01.jpg",
+      "assets/productos/choker-mia/choker-mia-02.jpg",
+      "assets/productos/choker-mia/choker-mia-03.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "choker-mirror-champ",
+    "nombre": "Choker Mirror Champ",
+    "precio": "$15.000",
+    "descripcion": "Gargantilla estilo boho regulable.",
+    "categoria": "Collares",
+    "subcategoria": "",
+    "imagenPrincipal": "assets/productos/choker-mirror-champ/choker-mirror-champ-01.jpg",
+    "imagenes": [
+      "assets/productos/choker-mirror-champ/choker-mirror-champ-01.jpg",
+      "assets/productos/choker-mirror-champ/choker-mirror-champ-02.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "choker-mirror-plateado",
+    "nombre": "Choker Mirror Plateado",
+    "precio": "$15.000",
+    "descripcion": "Gargantilla estilo boho regulable.",
+    "categoria": "Collares",
+    "subcategoria": "",
+    "imagenPrincipal": "assets/productos/choker-mirror-plateado/choker-mirror-plateado-01.jpg",
+    "imagenes": [
+      "assets/productos/choker-mirror-plateado/choker-mirror-plateado-01.jpg",
+      "assets/productos/choker-mirror-plateado/choker-mirror-plateado-02.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "choker-ray",
+    "nombre": "Choker Ray",
+    "precio": "$15.000",
+    "descripcion": "Gargantilla estilo boho regulable.",
+    "categoria": "Collares",
+    "subcategoria": "",
+    "imagenPrincipal": "assets/productos/choker-ray/choker-ray-01.jpg",
+    "imagenes": [
+      "assets/productos/choker-ray/choker-ray-01.jpg",
+      "assets/productos/choker-ray/choker-ray-02.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
+    "slug": "choker-torn",
+    "nombre": "Choker Torn",
+    "precio": "$15.000",
+    "descripcion": "Gargantilla estilo boho regulable.",
+    "categoria": "Collares",
+    "subcategoria": "",
+    "imagenPrincipal": "assets/productos/choker-torn/choker-torn-01.jpg",
+    "imagenes": [
+      "assets/productos/choker-torn/choker-torn-01.jpg",
+      "assets/productos/choker-torn/choker-torn-02.jpg"
+    ],
+    "whatsapp": "5491164282208"
+  },
+  {
     "slug": "pulsera-helly-dorada",
     "nombre": "Pulsera Helly Dorada",
     "precio": "$16.500",

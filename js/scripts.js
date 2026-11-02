@@ -788,6 +788,20 @@ const BRUNA_DISCOUNT_CODE = "MAMA15";
 const BRUNA_DISCOUNT_ENABLED = false;
 
 const BRUNA_NEW_PRODUCT_SLUGS = [
+  "choker-ballo",
+  "choker-billy",
+  "choker-blew",
+  "choker-brish",
+  "choker-cub",
+  "choker-grip",
+  "choker-hally",
+  "choker-kila",
+  "choker-loop",
+  "choker-mia",
+  "choker-mirror-champ",
+  "choker-mirror-plateado",
+  "choker-ray",
+  "choker-torn",
   "pulsera-chain-dorada",
   "esclava-tiff-dorada",
   "esclava-tiff-plateada",
