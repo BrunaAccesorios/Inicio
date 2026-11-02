@@ -245,7 +245,7 @@
   {
     "slug": "pulsera-twist",
     "nombre": "Pulsera Twist",
-    "precio": "$9.000",
+    "precio": "$10.000",
     "descripcion": "Pulsera de acero blanco.",
     "material": "Acero Blanco",
     "categoria": "Pulseras",
@@ -275,7 +275,7 @@
   {
     "slug": "cuff-rook",
     "nombre": "Cuff Rook",
-    "precio": "$7.000",
+    "precio": "$8.500",
     "descripcion": "Aro a presión sin perforación, regulable (aro falso).",
     "material": "Acero Blanco",
     "categoria": "Aros",
@@ -291,7 +291,7 @@
   {
     "slug": "cuff-viole",
     "nombre": "Cuff Viole",
-    "precio": "$7.000",
+    "precio": "$8.500",
     "descripcion": "Aro a presión sin perforación, regulable (aro falso).",
     "material": "Acero Blanco",
     "categoria": "Aros",
@@ -307,7 +307,7 @@
   {
     "slug": "cuff-spice",
     "nombre": "Cuff Spice",
-    "precio": "$7.000",
+    "precio": "$8.500",
     "descripcion": "Aro a presión sin perforación (aro falso).",
     "material": "Acero Quirúrgico",
     "categoria": "Aros",

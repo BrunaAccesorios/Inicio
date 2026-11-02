@@ -1029,7 +1029,7 @@ function saveCouponApplied(isApplied) {
   }
 }
 
-const CART_PRICE_REVISION = "2026-10-30";
+const CART_PRICE_REVISION = "2026-11-02";
 const CART_PRICE_UPDATES = { 10000: 12000, 15000: 16500, 6000: 8000, 8000: 10000, 17000: 20000, 20000: 21500, 22000: 23500, 12000: 14500 };
 
 function loadCart() {
@@ -1044,9 +1044,15 @@ function loadCart() {
       return !BRUNA_OUT_OF_STOCK_SLUGS.some((slug) => itemId.includes(`/productos/${slug}/`));
     }).map((item) => {
       const savedPrice = Number(item.originalPrice) || Number(item.price) || 0;
-      const originalPrice = item.priceRevision === CART_PRICE_REVISION
+      const previousPrice = ["2026-10-30", CART_PRICE_REVISION].includes(item.priceRevision)
         ? savedPrice
         : CART_PRICE_UPDATES[savedPrice] || savedPrice;
+      const isCuff = /\/productos\/cuff-[^/]+\//.test(String(item.id || ""));
+      const originalPrice = isCuff
+        ? (String(item.id).includes("/productos/cuff-oxford/") ? 9500 : 8500)
+        : item.priceRevision === CART_PRICE_REVISION
+          ? previousPrice
+          : ({ 9500: 10500, 9000: 10000 }[previousPrice] || previousPrice);
       return {
         ...item,
         priceRevision: CART_PRICE_REVISION,
