@@ -1048,7 +1048,7 @@ function loadCart() {
         ? savedPrice
         : CART_PRICE_UPDATES[savedPrice] || savedPrice;
       const isCuff = /\/productos\/cuff-[^/]+\//.test(String(item.id || ""));
-      const originalPrice = isCuff
+      const originalPrice = previousPrice === 7500 ? 9000 : isCuff
         ? (String(item.id).includes("/productos/cuff-oxford/") ? 9500 : 8500)
         : item.priceRevision === CART_PRICE_REVISION
           ? previousPrice
