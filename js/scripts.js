@@ -795,6 +795,7 @@ const BRUNA_DISCOUNT_CODE = "CYBER15";
 const BRUNA_DISCOUNT_ENABLED = true;
 
 const BRUNA_NEW_PRODUCT_SLUGS = [
+  "collar-ainoa-negro",
   "choker-ballo",
   "choker-billy",
   "choker-blew",

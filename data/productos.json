@@ -1,4 +1,18 @@
 [
+{
+  "slug": "collar-ainoa-negro",
+  "nombre": "Collar Ainoa Negro",
+  "precio": "$15.000",
+  "descripcion": "Cordón brilloso estilo corbatín, se puede atar de muchas formas.",
+  "categoria": "Collares",
+  "subcategoria": "",
+  "imagenPrincipal": "assets/productos/collar-ainoa-negro/collar-ainoa-negro-01.jpg",
+  "imagenes": [
+    "assets/productos/collar-ainoa-negro/collar-ainoa-negro-01.jpg",
+    "assets/productos/collar-ainoa-negro/collar-ainoa-negro-02.jpg"
+  ],
+  "whatsapp": "5491164282208"
+},
   {
     "slug": "choker-ballo",
     "nombre": "Choker Ballo",
