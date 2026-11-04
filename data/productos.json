@@ -1,5 +1,19 @@
 [
 {
+  "slug": "collar-ainoa-plateado",
+  "nombre": "Collar Ainoa Plateado",
+  "precio": "$15.000",
+  "descripcion": "Cordón brilloso estilo corbatín, se puede atar de muchas formas.",
+  "categoria": "Collares",
+  "subcategoria": "",
+  "imagenPrincipal": "assets/productos/collar-ainoa-plateado/collar-ainoa-plateado-01.jpg",
+  "imagenes": [
+    "assets/productos/collar-ainoa-plateado/collar-ainoa-plateado-01.jpg",
+    "assets/productos/collar-ainoa-plateado/collar-ainoa-plateado-02.jpg"
+  ],
+  "whatsapp": "5491164282208"
+},
+{
   "slug": "collar-ainoa-negro",
   "nombre": "Collar Ainoa Negro",
   "precio": "$15.000",
