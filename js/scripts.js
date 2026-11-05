@@ -135,7 +135,6 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "collar-zoe-dorado",
   "collar-helly-plateado",
   "aros-fiorella",
-  "aros-italia",
   "esclava-tiff-dorada",
   "aros-anto-plateados",
   "collar-fela",
@@ -278,8 +277,6 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "corbatin-diana",
   "aros-paula",
   "anillo-kop",
-  "collar-xule",
-  "argollitas-stella-grandes",
 ];
 
 function applyHiddenProductState() {
