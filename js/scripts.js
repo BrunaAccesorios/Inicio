@@ -129,8 +129,12 @@ const BRUNA_HIDDEN_PRODUCT_SLUGS = [
 ];
 
 const BRUNA_OUT_OF_STOCK_SLUGS = [
+  "pulsera-twist",
+  "pulsera-chain-blanca",
+  "collar-nina",
+  "anillo-raw",
+  "anillo-ally",
   "collar-met",
-  "collar-cora",
   "esclava-loop",
   "collar-zoe-dorado",
   "collar-helly-plateado",
@@ -275,7 +279,6 @@ const BRUNA_OUT_OF_STOCK_SLUGS = [
   "collar-kei",
   "argollitas-stella-chicas",
   "corbatin-diana",
-  "aros-paula",
   "anillo-kop",
 ];
 
